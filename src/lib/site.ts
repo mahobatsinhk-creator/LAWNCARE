@@ -31,7 +31,7 @@ export const defaultSiteContent: SiteContent = {
   },
   home: {
     heroSubtitle:
-      "Keep your property looking its best—spring, summer, fall, and winter—with reliable, professional service you can trust.",
+      "Keep your property looking its best in every season with reliable, professional service you can count on.",
     heroCta: "Schedule Your Service Today",
     whyUsBadge: "Why Us",
     whyUsTitle: "Why Choose Us",
@@ -54,20 +54,20 @@ export const defaultSiteContent: SiteContent = {
   },
   whyUs: [
     {
-      title: "Experienced Team:",
-      text: "Years of expertise in lawn care and snow removal",
+      title: "Experienced Team",
+      text: "Skilled professionals with years of experience in lawn care, property maintenance, and snow removal.",
     },
     {
-      title: "All-Season Service:",
-      text: "One crew handles everything year-round",
+      title: "Year-Round Service",
+      text: "One dependable team handles your property's seasonal needs from spring through winter.",
     },
     {
-      title: "Reliable & Professional:",
-      text: "On time, thorough, and detail-oriented",
+      title: "Reliable and Professional",
+      text: "We arrive on time, complete every job thoroughly, and pay attention to the details.",
     },
     {
-      title: "Tailored Solutions:",
-      text: "Services customized to your property's needs",
+      title: "Customized Solutions",
+      text: "Every service plan is tailored to your property, priorities, and maintenance needs.",
     },
   ],
   homeServices: [
@@ -156,27 +156,27 @@ export const defaultSiteContent: SiteContent = {
       "Reliable snow removal services in Stony Plain, Edmonton, and nearby communities. Keep your property safe and accessible all winter.",
     heroImage: `${CDN}/didvk6gippnf8moc80hz3ilwsk5l`,
     heroText:
-      "Stay safe and worry-free all winter with Lawn Care and Snow Removal Experts. Our one dedicated crew provides fast, reliable, and professional snow removal for residential properties.",
+      "Stay safe and worry-free all winter with Lawn Care and Snow Removal Experts. Our dedicated crew delivers fast, dependable, and professional snow removal to keep your residential property clear, accessible, and safe throughout the season.",
     heroCta: "Get a Quote",
     featuresBadge: "Features",
     featuresTitle: "Benefits of Our Snow Removal Services",
     featuresImage: `${CDN}/vks0z2jzkx9onm5dyh13yxw2w0wa`,
     benefits: [
       {
-        title: "Timely Snow Clearing",
-        text: "We ensure prompt removal of snow to keep driveways, walkways, and parking areas clear and safe.",
+        title: "Prompt Snow Clearing",
+        text: "We clear snow quickly and efficiently to keep driveways, walkways, entrances, and parking areas safe and accessible.",
       },
       {
-        title: "Ice Management Solutions",
-        text: "Our team applies effective ice melt products to prevent slips and falls on icy surfaces.",
+        title: "Effective Ice Management",
+        text: "Our team applies reliable ice-control products to reduce slippery surfaces and help prevent slips and falls.",
       },
       {
         title: "Customized Winter Maintenance",
-        text: "We tailor our snow removal plans to meet the unique needs of residential properties.",
+        text: "Every snow removal plan is tailored to the size, layout, and specific needs of your residential property.",
       },
       {
-        title: "Reliable Local Service",
-        text: "As a trusted local crew, we provide dependable snow care you can count on throughout the winter season.",
+        title: "Dependable Local Service",
+        text: "As a trusted local team, we provide consistent, professional snow care throughout the winter season.",
       },
     ],
     gallery: [
@@ -187,9 +187,9 @@ export const defaultSiteContent: SiteContent = {
       `${CDN}/dzvf4d2ncfmez15vz0df1ab11zaw`,
       `${CDN}/z2kp5qlpoa4gvhsfhuv5ohyrk5po`,
     ],
-    ctaTitle: "Get Ready for Winter with Expert Snow Removal",
+    ctaTitle: "Get Winter - Ready with Expert Snow Removal",
     ctaText:
-      "Keep your home safe and accessible all winter long with our reliable residential snow removal services. We provide prompt snow clearing for driveways, sidewalks, and walkways, helping reduce slip hazards and giving you peace of mind after every snowfall. Whether you need seasonal service or snow removal after major storms, our team is committed to keeping your property clear and winter-ready.",
+      "Keep your home safe, clear, and accessible throughout the winter with dependable residential snow removal. Our team promptly clears driveways, sidewalks, entrances, and walkways to reduce slippery conditions and make navigating your property easier after every snowfall.\n\nWhether you require ongoing seasonal maintenance or service following a major storm, you can count on us to keep your property clear, safe, and ready for winter.",
     ctaButton: "Free Winter Quote",
     faqTitle: "Frequently Asked Questions about Snow Removal",
     faqIntro: "Find answers to common questions about our winter services.",
@@ -236,27 +236,27 @@ export const defaultSiteContent: SiteContent = {
       "Professional lawn care and maintenance for residential and commercial properties in Alberta, including snow removal and seasonal upkeep.",
     heroImage: `${CDN}/q6p7atfkrqjnb3fwhqc8kepmgsf8`,
     heroText:
-      "Keeping your property lush and accessible year-round with professional lawn and snow services.",
+      "Keeping your property beautiful, well-maintained, and accessible year-round with professional lawn care and snow removal services.",
     heroCta: "Inquire Today!",
     featuresBadge: "Why Choose Us!",
-    featuresTitle: "Why Choose Us!",
+    featuresTitle: "Complete Property Care in Every Season",
     featuresImage: `${CDN}/etd9k7nbg9vo8n0whz5eanux474m`,
     benefits: [
       {
-        title: "Comprehensive Year-Round Care",
-        text: "From spring fertilization to winter snow removal, we handle all aspects of lawn maintenance to keep your property beautiful and functional.",
+        title: "Comprehensive Year-Round Service",
+        text: "From spring fertilization and routine lawn maintenance to fall cleanup and winter snow removal, we keep your property attractive, functional, and well cared for throughout the year.",
       },
       {
         title: "Reliable Local Service",
-        text: "Our experienced team provides dependable services for residential clients across Alberta.",
+        text: "Our experienced local team provides dependable, professional property maintenance for residential clients across Alberta.",
       },
       {
-        title: "Customized Solutions",
-        text: "We tailor our lawn care and snow removal plans to meet your specific needs and property requirements.",
+        title: "Customized Service Plans",
+        text: "We tailor our lawn care and snow removal services to suit your property, schedule, and specific maintenance needs.",
       },
       {
-        title: "Efficient & Safe Operations",
-        text: "Using industry-leading equipment and techniques, we ensure quick turnaround times while prioritizing safety.",
+        title: "Efficient and Safety-Focused",
+        text: "Using professional equipment and proven techniques, we complete each job efficiently while prioritizing the safety of your property and everyone who uses it.",
       },
     ],
     gallery: [
@@ -269,9 +269,9 @@ export const defaultSiteContent: SiteContent = {
       `${CDN}/tsqrmne1ojviqxxxoxlg5blwj6gx`,
       `${CDN}/t7sl2h4pyi27razwcq31ebgck3re`,
     ],
-    ctaTitle: "Schedule Your Lawn Care Service Today!",
+    ctaTitle: "Complete Property Care in Every Season",
     ctaText:
-      "We combine experience, attention to detail, and tailored solutions to meet the needs of residential properties. From regular maintenance to seasonal projects, we make it easy to have a healthy, beautiful lawn without the stress.",
+      "From spring fertilization and routine lawn maintenance to fall cleanup and winter snow removal, we keep your property attractive, functional, and well cared for throughout the year. Our experienced local team provides dependable, professional property maintenance for residential clients across Alberta. We tailor our lawn care and snow removal services to suit your property, schedule, and specific maintenance needs—completing each job efficiently while prioritizing the safety of your property and everyone who uses it.",
     ctaButton: "Inquire Today!",
     faqTitle: "Frequently Asked Questions about Lawn & Snow Services",
     faqIntro:

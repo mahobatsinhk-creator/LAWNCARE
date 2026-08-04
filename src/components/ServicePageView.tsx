@@ -164,9 +164,11 @@ export function ServicePageView({
           >
             {data.ctaTitle}
           </h2>
-          <p className="mt-4 text-base font-normal text-white/90 md:text-lg">
-            {data.ctaText}
-          </p>
+          <div className="mt-4 space-y-4 text-base font-normal text-white/90 md:text-lg">
+            {data.ctaText.split(/\n\n+/).map((paragraph) => (
+              <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+            ))}
+          </div>
           <Link href="/contact" className="btn-light mt-8">
             {data.ctaButton}
           </Link>
