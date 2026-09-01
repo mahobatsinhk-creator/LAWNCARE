@@ -72,19 +72,24 @@
                 <div class="harmone-about-feature" data-reveal-group>
                     <div class="harmone-about-media harmone-reveal" data-reveal="slide-in">
                         <img src="{{ $about_feature_image }}" alt="Snow removal service in Spruce Grove, Alberta"
+                            class="harmone-about-media__photo"
+                            fetchpriority="high"
                             loading="lazy" decoding="async">
+                        <img src="/assets/site/logo-header.png?v=group121" alt=""
+                            class="harmone-about-media__logo" width="80" height="80" loading="lazy" decoding="async"
+                            aria-hidden="true">
                     </div>
                     <div class="harmone-about-card-shell harmone-reveal" data-reveal="fade-up" data-reveal-delay="180">
                         <div class="harmone-about-card">
                             <div class="harmone-about-card-top">
                                 <div class="harmone-about-card-author">
-                                    <img src="{{ $site['logo'] }}" alt="" width="50" height="50"
-                                        class="harmone-about-card-logo site-logo site-logo--sm" loading="lazy" decoding="async">
-                                    <div>
+                                    <div class="harmone-about-card-author-text">
                                         <p class="harmone-about-card-name">{{ $site['name'] }}</p>
                                         <p class="harmone-about-card-role">{{ $site['address']['city'] }},
                                             {{ $site['address']['region'] }}</p>
                                     </div>
+                                    <img src="/assets/site/logo-header.png?v=group121" alt="" width="50" height="50"
+                                        class="harmone-about-card-logo site-logo site-logo--sm" loading="lazy" decoding="async">
                                 </div>
                                 <div class="harmone-about-card-body">
                                     <p class="harmone-about-card-label">{{ $home['promise_title'] }}</p>
@@ -122,28 +127,6 @@
         </div>
     </section>
 
-    {{-- Process --}}
-    <section class="section-shell bg-page harmone-process-section">
-        <div class="section-inner">
-            @include('partials.harmone-section-header', [
-                'badge' => $home['process_badge'],
-                'title' => $home['process_title'],
-            ])
-            <div class="harmone-process-media">
-                <div class="harmone-process-video">
-                    <video autoplay loop muted playsinline poster="{{ $site['why_us_image'] }}">
-                        <source src="{{ $site['process_video'] }}" type="video/mp4">
-                    </video>
-                </div>
-                <div class="harmone-process-side-image">
-                    <img src="{{ $site['process_side_image'] }}" alt="Well-maintained lawn and garden space"
-                        width="952" height="1200" loading="lazy">
-                </div>
-            </div>
-            @include('partials.greenly-process-steps')
-        </div>
-    </section>
-
     {{-- Why Choose Us --}}
     <section id="why-us" class="section-shell bg-page harmone-why-section" data-reveal-group>
         <div class="section-inner grid min-w-0 items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -169,7 +152,7 @@
                 </ul>
             </div>
             <div class="relative min-w-0 max-w-full overflow-hidden rounded-[20px] aspect-[4/5] harmone-reveal" data-reveal="slide-in">
-                <img src="{{ $site['why_us_image'] }}" alt="Snow removal and lawn care services"
+                <img src="{{ $site['why_us_image'] }}" alt="Professional lawn care services"
                     class="h-full w-full object-cover" loading="lazy">
             </div>
         </div>
@@ -221,9 +204,10 @@
                 </ul>
                 <a href="/contact" class="harmone-btn-primary">{{ $home['areas_cta'] }}</a>
             </div>
-            <div class="relative min-w-0 max-w-full overflow-hidden rounded-[20px] aspect-[4/5]">
-                <img src="{{ $site['promise_image'] }}" alt="Property maintenance"
-                    class="h-full w-full object-cover">
+            <div class="harmone-areas-map-shell">
+                <div id="service-areas-map" class="harmone-areas-map" role="region"
+                    aria-label="Map of service areas in Alberta"
+                    data-areas='@json($service_area_coordinates ?? [])'></div>
             </div>
         </div>
     </section>

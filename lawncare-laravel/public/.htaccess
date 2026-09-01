@@ -5,6 +5,9 @@
 
     RewriteEngine On
 
+    # Laravel admin dashboard lives at /admin — must not be blocked by a physical folder.
+    RewriteRule ^admin/?$ index.php [L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

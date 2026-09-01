@@ -51,7 +51,7 @@
         </section>
 
         {{-- Related posts --}}
-        @if ($related_posts->isNotEmpty())
+        @if (! empty($related_posts))
             <section class="harmone-blog-detail__related">
                 <div class="harmone-blog-detail__related-inner">
                     <div class="harmone-blog-detail__related-header">

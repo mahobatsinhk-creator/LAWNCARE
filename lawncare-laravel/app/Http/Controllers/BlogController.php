@@ -2,32 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Support\SiteData;
 use Illuminate\View\View;
 
 class BlogController extends Controller
 {
     public function index(): View
     {
-        return view('blogs.index', config('site'));
+        return view('blogs.index', SiteData::all());
     }
 
     public function show(string $slug): View
     {
-        $post = collect(config('site.blog_posts'))->firstWhere('slug', $slug);
+        $post = SiteData::findBlogPost($slug);
 
         abort_unless($post, 404);
 
-        $content = config("blog_content.{$slug}", []);
-        $post = array_merge($post, $content);
-
-        $relatedPosts = collect(config('site.blog_posts'))
-            ->where('slug', '!=', $slug)
-            ->take(3)
-            ->values();
-
-        return view('blogs.show', array_merge(config('site'), [
+        return view('blogs.show', array_merge(SiteData::all(), [
             'post' => $post,
-            'related_posts' => $relatedPosts,
+            'related_posts' => SiteData::relatedBlogPosts($slug),
         ]));
     }
 }

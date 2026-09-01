@@ -14,6 +14,8 @@
             </div>
         </section>
 
+        @include('partials.greenly-service-offerings', ['service' => $service])
+
         @include('partials.greenly-service-features', ['service' => $service])
 
         <div class="greenly-service-detail__back-wrap" data-reveal-group>

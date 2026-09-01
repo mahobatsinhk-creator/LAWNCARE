@@ -8,8 +8,8 @@
     data-header-solid="{{ request()->is('/') ? 'false' : 'true' }}">
     <div class="site-header__grain" aria-hidden></div>
     <div id="header-inner" class="site-header__inner">
-        <a href="/" class="block shrink-0" aria-label="{{ $site['name'] }}">
-            <img id="header-logo" src="{{ $site['logo'] }}" alt="{{ $site['name'] }} logo"
+        <a href="/" class="header-logo-link shrink-0" aria-label="{{ $site['name'] }}">
+            <img id="header-logo" src="/assets/site/logo-header.png?v=group121" alt="{{ $site['name'] }} logo"
                 class="header-logo site-logo transition-all duration-300">
         </a>
 
@@ -48,7 +48,60 @@
                 </span>
                 {{ $site['phone'] }}
             </a>
-            <a href="/contact" id="header-book-btn" class="harmone-book-btn">Book now</a>
+            <a href="{{ $site['quote_url'] }}" id="header-book-btn" class="harmone-book-btn">{{ $site['quote_label'] }}</a>
+            <button type="button" id="header-menu-btn" class="header-menu-btn" aria-expanded="false"
+                aria-controls="header-mobile-nav" aria-label="Open menu">
+                <svg class="header-menu-btn__icon" data-icon-menu width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
         </div>
     </div>
+
+    <div id="header-mobile-backdrop" class="site-header__backdrop" hidden aria-hidden="true"></div>
+
+    <nav id="header-mobile-nav" class="site-header__mobile" aria-label="Mobile" hidden>
+        <div class="site-header__mobile-panel">
+            <ul class="site-header__mobile-list">
+                @foreach ($nav_links as $link)
+                    <li>
+                        <a href="{{ $link['href'] }}" class="site-header__mobile-link">{{ $link['label'] }}</a>
+                    </li>
+
+                    @if ($link['href'] === '/')
+                        <li class="site-header__mobile-item site-header__mobile-item--services">
+                            <button type="button" id="mobile-services-toggle"
+                                class="site-header__mobile-link site-header__mobile-toggle" aria-expanded="false"
+                                aria-controls="mobile-services-submenu">
+                                <span>Services</span>
+                                <svg class="site-header__mobile-chevron" width="16" height="16" viewBox="0 0 14 14" aria-hidden>
+                                    <path d="M3 5.5 7 9.5 11 5.5" fill="transparent" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <ul id="mobile-services-submenu" class="site-header__mobile-sublist" hidden>
+                                @foreach ($service_links as $serviceLink)
+                                    <li>
+                                        <a href="{{ $serviceLink['href'] }}"
+                                            class="site-header__mobile-link site-header__mobile-link--service">{{ $serviceLink['label'] }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
+
+            <div class="site-header__mobile-footer">
+                <a href="{{ $site['phone_href'] }}" class="site-header__mobile-phone">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                        <path
+                            d="M6.6 10.8c1.6 3.1 3.5 5 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.2 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" />
+                    </svg>
+                    {{ $site['phone'] }}
+                </a>
+                <a href="{{ $site['quote_url'] }}" class="harmone-book-btn site-header__mobile-cta">{{ $site['quote_label'] }}</a>
+            </div>
+        </div>
+    </nav>
 </header>

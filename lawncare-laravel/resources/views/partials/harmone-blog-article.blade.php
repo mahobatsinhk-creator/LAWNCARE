@@ -1,11 +1,11 @@
-@foreach ($post['sections'] as $section)
+@foreach ($post['sections'] ?? [] as $section)
     @switch($section['type'])
         @case('heading')
             <h2 class="harmone-blog-detail__heading harmone-reveal" data-reveal="fade-up">{{ $section['text'] }}</h2>
             @break
 
         @case('paragraph')
-            <p class="harmone-blog-detail__paragraph harmone-reveal" data-reveal="fade-up">{{ $section['text'] }}</p>
+            <div class="harmone-blog-detail__paragraph harmone-reveal" data-reveal="fade-up">{!! $section['text'] !!}</div>
             @break
 
         @case('cards')

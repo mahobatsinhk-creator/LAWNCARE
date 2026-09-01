@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initAboutPageScroll();
     initServiceCards();
     initImageCompareSliders();
+    initQuoteWizard();
+    initServiceAreasMap();
 });
 
 function initHeader() {
@@ -23,15 +25,77 @@ function initHeader() {
         }
     }
 
+    let closeMobileMenu = null;
+
     function onScroll() {
         const forceSolid = header.dataset.headerSolid === 'true';
         setScrolled(forceSolid || window.scrollY > 24);
+        closeMobileMenu?.();
     }
 
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
     initServicesDropdown();
+    closeMobileMenu = initMobileMenu();
+}
+
+function initMobileMenu() {
+    const menuBtn = document.getElementById('header-menu-btn');
+    const mobileNav = document.getElementById('header-mobile-nav');
+    const backdrop = document.getElementById('header-mobile-backdrop');
+    const servicesToggle = document.getElementById('mobile-services-toggle');
+    const servicesSubmenu = document.getElementById('mobile-services-submenu');
+    if (!menuBtn || !mobileNav) return null;
+
+    const setServicesOpen = (open) => {
+        if (!servicesToggle || !servicesSubmenu) return;
+
+        servicesToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        servicesSubmenu.hidden = !open;
+    };
+
+    const setOpen = (open) => {
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        mobileNav.classList.toggle('is-open', open);
+        mobileNav.hidden = !open;
+        if (backdrop) {
+            backdrop.hidden = !open;
+            backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+        document.body.classList.toggle('site-header-menu-open', open);
+
+        if (!open) {
+            setServicesOpen(false);
+        }
+    };
+
+    menuBtn.addEventListener('click', () => {
+        setOpen(menuBtn.getAttribute('aria-expanded') !== 'true');
+    });
+
+    backdrop?.addEventListener('click', () => setOpen(false));
+
+    servicesToggle?.addEventListener('click', () => {
+        setServicesOpen(servicesToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    mobileNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            setOpen(false);
+        }
+    });
+
+    return () => {
+        if (menuBtn.getAttribute('aria-expanded') === 'true') {
+            setOpen(false);
+        }
+    };
 }
 
 function initServicesDropdown() {
@@ -61,6 +125,26 @@ function initServicesDropdown() {
     });
 }
 
+function postJsonForm(url, formData) {
+    const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': token || '',
+            Accept: 'application/json',
+        },
+        body: formData,
+    }).then(async (response) => {
+        if (!response.ok) {
+            const data = await response.json().catch(() => ({}));
+            throw new Error(data.message || 'Unable to submit form.');
+        }
+
+        return response.json();
+    });
+}
+
 function initForms() {
     document.querySelectorAll('[data-hero-email], [data-footer-email]').forEach((form) => {
         form.addEventListener('submit', (e) => {
@@ -71,21 +155,31 @@ function initForms() {
 
             if (useContact) {
                 window.location.href = email
-                    ? `/contact?email=${encodeURIComponent(email)}#quote`
-                    : '/contact#quote';
+                    ? `/get-quote?email=${encodeURIComponent(email)}`
+                    : '/get-quote';
                 return;
             }
 
-            window.location.href = email ? `/contact?email=${encodeURIComponent(email)}#quote` : '/contact#quote';
+            window.location.href = email ? `/get-quote?email=${encodeURIComponent(email)}` : '/get-quote';
         });
     });
 
     document.querySelectorAll('[data-quote-form]').forEach((form) => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
             const thanks = form.parentElement?.querySelector('[data-quote-thanks]');
-            form.classList.add('hidden');
-            thanks?.classList.remove('hidden');
+            const submitButton = form.querySelector('[type="submit"]');
+
+            submitButton?.setAttribute('disabled', 'disabled');
+
+            try {
+                await postJsonForm('/contact/inquiry', new FormData(form));
+                form.classList.add('hidden');
+                thanks?.classList.remove('hidden');
+            } catch (error) {
+                window.alert(error.message || 'Unable to submit your inquiry. Please try again.');
+                submitButton?.removeAttribute('disabled');
+            }
         });
     });
 }
@@ -422,4 +516,220 @@ function initImageCompareSliders() {
 
         setPosition(position);
     });
+}
+
+function initQuoteWizard() {
+    const form = document.querySelector('[data-quote-wizard]');
+    if (!form) return;
+
+    const steps = [...form.querySelectorAll('[data-quote-step]')];
+    const progressBars = [...form.querySelectorAll('[data-quote-progress]')];
+    const review = form.parentElement?.querySelector('[data-quote-review]');
+    const thanks = form.parentElement?.querySelector('[data-quote-thanks]');
+    let currentStep = 1;
+
+    const phoneInput = form.querySelector('[data-phone-mask]');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+            const digits = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+            let formatted = '';
+
+            if (digits.length > 0) {
+                formatted = `(${digits.slice(0, 3)}`;
+            }
+            if (digits.length >= 4) {
+                formatted += `) ${digits.slice(3, 6)}`;
+            }
+            if (digits.length >= 7) {
+                formatted += `-${digits.slice(6, 10)}`;
+            }
+
+            phoneInput.value = formatted;
+        });
+    }
+
+    const showStep = (step) => {
+        currentStep = step;
+
+        steps.forEach((fieldset) => {
+            const active = Number(fieldset.dataset.quoteStep) === step;
+            fieldset.hidden = !active;
+            fieldset.classList.toggle('is-active', active);
+        });
+
+        progressBars.forEach((bar) => {
+            const index = Number(bar.dataset.quoteProgress);
+            bar.classList.toggle('is-active', index === step);
+            bar.classList.toggle('is-complete', index < step);
+        });
+
+        if (step === 3) {
+            renderReview();
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const validateStep = (step) => {
+        const fieldset = steps.find((item) => Number(item.dataset.quoteStep) === step);
+        if (!fieldset) return true;
+
+        const fields = [...fieldset.querySelectorAll('input, select, textarea')].filter(
+            (field) => !field.disabled && field.type !== 'checkbox',
+        );
+
+        for (const field of fields) {
+            if (!field.checkValidity()) {
+                field.reportValidity();
+                field.focus();
+                return false;
+            }
+        }
+
+        return true;
+    };
+
+    const renderReview = () => {
+        if (!review) return;
+
+        const data = new FormData(form);
+        const labels = {
+            first_name: 'First name',
+            last_name: 'Last name',
+            company: 'Company name',
+            email: 'Email',
+            phone: 'Phone',
+            street: 'Street address',
+            unit: 'Unit',
+            city: 'City',
+            province: 'Province',
+            postal_code: 'Postal Code',
+            service: 'Service',
+            message: 'Project details',
+        };
+
+        review.innerHTML = Object.entries(labels)
+            .map(([name, label]) => {
+                let value = data.get(name);
+                if (!value) return '';
+
+                if (name === 'province') {
+                    const option = form.querySelector(`select[name="province"] option[value="${value}"]`);
+                    value = option?.textContent || value;
+                }
+
+                return `
+                    <div class="harmone-quote-review__item">
+                        <span class="harmone-quote-review__label">${label}</span>
+                        <div class="harmone-quote-review__value">${String(value).replace(/</g, '&lt;')}</div>
+                    </div>
+                `;
+            })
+            .filter(Boolean)
+            .join('');
+    };
+
+    form.querySelectorAll('[data-quote-next]').forEach((button) => {
+        button.addEventListener('click', () => {
+            if (!validateStep(currentStep)) return;
+            showStep(Math.min(currentStep + 1, steps.length));
+        });
+    });
+
+    form.querySelectorAll('[data-quote-back]').forEach((button) => {
+        button.addEventListener('click', () => {
+            showStep(Math.max(currentStep - 1, 1));
+        });
+    });
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!validateStep(currentStep)) return;
+
+        const submitButton = form.querySelector('[type="submit"]');
+        submitButton?.setAttribute('disabled', 'disabled');
+
+        const formData = new FormData(form);
+        formData.set('marketing_email', form.querySelector('[name="marketing_email"]')?.checked ? '1' : '0');
+        formData.set('marketing_sms', form.querySelector('[name="marketing_sms"]')?.checked ? '1' : '0');
+
+        try {
+            await postJsonForm('/get-quote', formData);
+            form.classList.add('hidden');
+            thanks?.classList.remove('hidden');
+        } catch (error) {
+            window.alert(error.message || 'Unable to submit your quote request. Please try again.');
+            submitButton?.removeAttribute('disabled');
+        }
+    });
+}
+
+async function initServiceAreasMap() {
+    const mapEl = document.getElementById('service-areas-map');
+    if (!mapEl) return;
+
+    let areas = [];
+
+    try {
+        areas = JSON.parse(mapEl.dataset.areas || '[]');
+    } catch {
+        return;
+    }
+
+    if (!Array.isArray(areas) || areas.length === 0) return;
+
+    const [{ default: L }] = await Promise.all([
+        import('leaflet'),
+        import('leaflet/dist/leaflet.css'),
+    ]);
+
+    const map = L.map(mapEl, {
+        scrollWheelZoom: false,
+        zoomControl: true,
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 18,
+    }).addTo(map);
+
+    const bounds = L.latLngBounds([]);
+    const markers = [];
+
+    areas.forEach((area, index) => {
+        if (!area?.name || area.lat == null || area.lng == null) return;
+
+        const marker = L.marker([area.lat, area.lng], {
+            icon: L.divIcon({
+                className: 'harmone-areas-map-marker-wrap',
+                html: `<span class="harmone-areas-map-marker" aria-hidden="true">${index + 1}</span>`,
+                iconSize: [28, 28],
+                iconAnchor: [14, 14],
+                popupAnchor: [0, -16],
+            }),
+        }).addTo(map);
+
+        marker.bindPopup(area.name, { className: 'harmone-areas-map-popup' });
+        bounds.extend([area.lat, area.lng]);
+        markers.push({ marker, name: area.name });
+    });
+
+    if (bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [32, 32], maxZoom: 11 });
+    }
+
+    document.querySelectorAll('#areas .harmone-area-pill').forEach((pill, index) => {
+        pill.style.cursor = 'pointer';
+
+        pill.addEventListener('click', () => {
+            const target = markers[index];
+            if (!target) return;
+
+            map.setView(target.marker.getLatLng(), 12, { animate: true });
+            target.marker.openPopup();
+        });
+    });
+
+    requestAnimationFrame(() => map.invalidateSize());
+    window.addEventListener('resize', () => map.invalidateSize(), { passive: true });
 }

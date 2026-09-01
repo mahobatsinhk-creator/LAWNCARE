@@ -224,4 +224,78 @@ return [
             'text' => 'Sophia helps homeowners simplify property care by combining smart maintenance choices with professional lawn, cleanup, and snow services tailored to Alberta seasons.',
         ],
     ],
+
+    'professional-lawn-care-tips-for-a-healthier-yard-in-alberta' => [
+        'reading_time' => '7 min read',
+        'author_avatar' => "{$harmone}/rBzCXq2OPRoBvPkyXAb1Btonbg20cf.png",
+        'quote' => [
+            'text' => 'A healthy Alberta lawn is built on consistent mowing, smart fertilization, and seasonal cleanup — not one weekend of heavy work.',
+            'author' => 'Emma Collins',
+            'role' => 'Lawn Care Specialist',
+        ],
+        'sections' => [
+            ['type' => 'heading', 'text' => 'What Alberta lawns need most'],
+            ['type' => 'paragraph', 'text' => 'Spruce Grove and Edmonton-area lawns deal with short growing seasons, heavy spring melt, summer heat, and long winters. The properties that look their best year after year follow a steady lawn care plan instead of waiting until the grass is overgrown or patchy.'],
+            ['type' => 'heading', 'text' => 'Core lawn care services that make a difference'],
+            ['type' => 'cards', 'items' => [
+                ['title' => 'Regular mowing', 'text' => 'Consistent mowing at the right height keeps turf thick and helps crowd out weeds.'],
+                ['title' => 'Fertilization', 'text' => 'Timed feeding supports root strength after winter and before fall dormancy.'],
+                ['title' => 'Weed control', 'text' => 'Manual weed control and healthy turf reduce problem areas before they spread.'],
+                ['title' => 'Seasonal cleanup', 'text' => 'Spring and fall cleanups remove debris that smothers grass and invites disease.'],
+            ]],
+            ['type' => 'image', 'src' => "{$harmone}/eW46cLJR4pk9p8HZgiCoj2s2cd51e.png", 'alt' => 'Professional lawn mowing service'],
+            ['type' => 'heading', 'text' => 'Residential and commercial lawn care'],
+            ['type' => 'paragraph', 'text' => 'We provide lawn care and summer property maintenance for both residential and commercial clients across Spruce Grove, Stony Plain, Edmonton, and nearby communities. Whether you need weekly mowing for your home or scheduled maintenance for a business property, the goal is the same: reliable results without the hassle.'],
+            ['type' => 'list', 'title' => 'Signs your lawn needs professional help', 'items' => [
+                ['title' => 'Thin or patchy grass', 'body' => 'Bare spots often point to compaction, poor drainage, or inconsistent mowing.'],
+                ['title' => 'Rapid weed growth', 'body' => 'Weeds spread quickly when turf is stressed or cut too short.'],
+                ['title' => 'No time for seasonal tasks', 'body' => 'Spring debris removal and fall cleanup are easy to miss without a set schedule.'],
+            ]],
+            ['type' => 'heading', 'text' => 'Pair lawn care with year-round property service'],
+            ['type' => 'paragraph', 'text' => 'Many homeowners choose one crew for lawn care, property cleanup, and residential snow removal. That means your property is cared for through every season with a team that already knows your driveway, beds, and lawn layout.'],
+        ],
+        'author_bio' => [
+            'name' => 'Emma Collins',
+            'role' => 'Lawn Care Specialist',
+            'image' => "{$harmone}/Kh3OntkbMrblFHELEfarYpmAASsb01f.png",
+            'text' => 'Emma supports residential and commercial lawn care clients across Spruce Grove and surrounding Alberta communities with mowing, fertilization, weed control, and seasonal maintenance.',
+        ],
+    ],
+
+    'why-seasonal-snow-removal-contracts-make-sense-for-spruce-grove-homeowners' => [
+        'reading_time' => '6 min read',
+        'author_avatar' => "{$harmone}/rBzCXq2OPRoBvPkyXAb1Btonbg20cf.png",
+        'quote' => [
+            'text' => 'A seasonal snow contract means your driveway is cleared after every storm — without calling around or waiting for the next available crew.',
+            'author' => 'Oliver Hughes',
+            'role' => 'Snow Removal Lead',
+        ],
+        'sections' => [
+            ['type' => 'heading', 'text' => 'Why book snow removal before winter'],
+            ['type' => 'paragraph', 'text' => 'Alberta winters arrive fast. Homeowners who wait until the first heavy snowfall often struggle to find reliable service when demand is highest. A seasonal residential snow removal contract locks in dependable coverage for your driveway, walkways, and high-traffic areas all winter long.'],
+            ['type' => 'heading', 'text' => 'What residential snow contracts include'],
+            ['type' => 'cards', 'items' => [
+                ['title' => 'Snow blowing', 'text' => 'Clear driveways and parking areas efficiently after each qualifying snowfall.'],
+                ['title' => 'Shoveling', 'text' => 'Keep steps, walkways, and tight areas safe for daily use.'],
+                ['title' => 'Ice control', 'text' => 'Reduce slippery surfaces on walks and entries after storms and freeze-thaw cycles.'],
+                ['title' => 'Priority scheduling', 'text' => 'Contract clients are serviced on a set route instead of one-off emergency calls.'],
+            ]],
+            ['type' => 'image', 'src' => "{$harmone}/kah8B3dDQ5Vowbe1nFgXhVA5Pw5c3e.png", 'alt' => 'Residential snow removal in Spruce Grove'],
+            ['type' => 'heading', 'text' => 'Residential snow removal only'],
+            ['type' => 'paragraph', 'text' => 'Our snow removal services are available exclusively for residential properties in Spruce Grove and surrounding communities. For lawn care and summer property maintenance, we serve both residential and commercial clients — but winter snow service is focused on keeping homes safe and accessible.'],
+            ['type' => 'list', 'title' => 'Questions to ask before signing a contract', 'items' => [
+                ['title' => 'What triggers a visit?', 'body' => 'Know the snowfall depth or weather conditions that start service.'],
+                ['title' => 'Which areas are included?', 'body' => 'Confirm driveways, walks, and any side entries covered in your plan.'],
+                ['title' => 'Is ice melt included?', 'body' => 'Ask how ice control is handled on steps and high-traffic paths.'],
+            ]],
+            ['type' => 'heading', 'text' => 'One crew for every season'],
+            ['type' => 'paragraph', 'text' => 'Many Spruce Grove homeowners use the same team for lawn care in summer and snow removal in winter. That continuity saves time, reduces miscommunication, and keeps your property maintained by people who already know the layout.'],
+        ],
+        'author_bio' => [
+            'name' => 'Oliver Hughes',
+            'role' => 'Snow Removal Lead',
+            'image' => "{$harmone}/uSCd3VV3VTgbCYDbL9KPzpXZTo0b01f.png",
+            'text' => 'Oliver leads residential snow removal operations for Spruce Grove and nearby Alberta communities, helping homeowners stay safe with reliable seasonal contracts and storm-by-storm service.',
+        ],
+    ],
 ];

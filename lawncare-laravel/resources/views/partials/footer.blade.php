@@ -72,7 +72,7 @@
                         <a href="mailto:{{ $site['email'] }}">{{ $site['email'] }}</a>
                     </li>
                     <li>
-                        <a href="{{ $footerHref('/contact') }}">Get a quote</a>
+                        <a href="/get-quote">Get a quote</a>
                     </li>
                     <li>
                         <a href="https://maps.google.com/?q={{ urlencode('PO Box 3683, ' . $site['address']['city'] . ', AB ' . $site['address']['postal_code']) }}"
@@ -83,30 +83,34 @@
                 </ul>
 
                 <div class="harmone-footer-social" aria-label="Social links">
-                    <a href="#" class="harmone-footer-social__link" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-                            <path fill="currentColor"
-                                d="M14 8.5V7.2c0-.7.5-1.2 1.2-1.2H17V3h-2.2C12.7 3 11 4.8 11 7v1.5H9v3h2V21h3v-10.5h2.6L17 8.5h-3z" />
-                        </svg>
-                    </a>
-                    <a href="#" class="harmone-footer-social__link" aria-label="X">
-                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-                            <path fill="currentColor"
-                                d="M17.5 3h3.1l-6.8 7.8L21.5 21h-6.2l-4.8-6.2L4.8 21H1.7l7.3-8.4L2.5 3h6.3l4.4 5.7L17.5 3zm-1.1 16.2h1.7L7.9 4.7H6.1l10.3 14.5z" />
-                        </svg>
-                    </a>
-                    <a href="#" class="harmone-footer-social__link" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-                            <path fill="currentColor"
-                                d="M6.5 8.7H3.6V21h2.9V8.7zM5 3a1.8 1.8 0 1 0 0 3.6A1.8 1.8 0 0 0 5 3zm4.2 5.7H6.3V21h2.9v-6.1c0-1.6.3-3.1 2.2-3.1 1.9 0 1.9 1.8 1.9 3.2V21H16V14c0-3.1-.7-5.5-4.3-5.5-1.7 0-2.9.9-3.4 1.8h-.1V8.7z" />
-                        </svg>
-                    </a>
-                    <a href="#" class="harmone-footer-social__link" aria-label="YouTube">
-                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-                            <path fill="currentColor"
-                                d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C17.8 4.8 12 4.8 12 4.8s-5.8 0-7.7.5A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9c1.9.5 7.7.5 7.7.5s5.8 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8zM10 15.5v-7l6.2 3.5L10 15.5z" />
-                        </svg>
-                    </a>
+                    @foreach ($social_links as $social)
+                        <a href="{{ $social['href'] }}" class="harmone-footer-social__link"
+                            aria-label="{{ $social['label'] }}"
+                            @if (! empty($social['external'])) target="_blank" rel="noopener noreferrer" @endif>
+                            @switch($social['network'])
+                                @case('facebook')
+                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+                                        <path fill="currentColor"
+                                            d="M14 8.5V7.2c0-.7.5-1.2 1.2-1.2H17V3h-2.2C12.7 3 11 4.8 11 7v1.5H9v3h2V21h3v-10.5h2.6L17 8.5h-3z" />
+                                    </svg>
+                                    @break
+
+                                @case('instagram')
+                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+                                        <path fill="currentColor"
+                                            d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 4.8A4.2 4.2 0 1 0 16.2 12 4.2 4.2 0 0 0 12 7.8zm0 1.8a2.4 2.4 0 1 1-2.4 2.4A2.4 2.4 0 0 1 12 9.6zm4.65-2.45a1 1 0 1 0-1 1 1 1 0 0 0 1-1z" />
+                                    </svg>
+                                    @break
+
+                                @case('google')
+                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+                                        <path fill="currentColor"
+                                            d="M12 3a9 9 0 0 0-6.36 15.36l1.2-1.2A7 7 0 1 1 17 10.5h-7v2.5h9.1A9 9 0 0 0 12 3z" />
+                                    </svg>
+                                    @break
+                            @endswitch
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

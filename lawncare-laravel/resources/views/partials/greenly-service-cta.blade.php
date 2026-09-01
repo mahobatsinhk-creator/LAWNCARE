@@ -8,7 +8,7 @@
             <p class="greenly-service-detail__cta-text harmone-reveal" data-reveal="fade-up" data-reveal-delay="100">
                 {{ $service_detail_page['cta_subtitle'] }}
             </p>
-            <a href="/contact#quote" class="greenly-service-detail__cta-btn harmone-reveal" data-reveal="fade-up"
+            <a href="/get-quote" class="greenly-service-detail__cta-btn harmone-reveal" data-reveal="fade-up"
                 data-reveal-delay="180">{{ $service_detail_page['cta_button'] }}</a>
         </div>
 

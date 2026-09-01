@@ -15,16 +15,18 @@ return [
         'phone_href' => 'tel:+15878795296',
         'email' => 'lawncareandsnowremovalexperts@gmail.com',
         'client_login' => 'https://clienthub.getjobber.com/client_hubs/edb6c02e-ba68-43b7-a255-ff4f0a73c524/login/new?source=share_login',
+        'quote_url' => '/get-quote',
+        'quote_label' => 'Get Quote',
         'address' => [
             'line1' => 'PO Box 3683 Po Main 360 Saskatchewan Ave',
             'city' => 'Spruce Grove',
             'region' => 'Alberta',
             'postal_code' => 'T7X 3A9',
         ],
-        'logo' => "{$cdn}/72ivb81rb4njfskjy3ztlmqedsr7",
+        'logo' => '/assets/site/logo-header.png',
         'hero_video' => 'https://framerusercontent.com/assets/BbBrpYmkGRxDlha1JE84gb3ri0.mp4',
         'hero_image' => "{$cdn}/h3h6bqgb3739myylkbjh0rbm3yjj",
-        'why_us_image' => "{$cdn}/4s6ub6cjcrzxtjtbn48kmnh1h16r",
+        'why_us_image' => '/assets/site/why-us-lawn-mower.png?v=whyus2026b',
         'cta_image' => "{$cdn}/epx4owlg1s9ypo0cqnmz1lde0u87",
         'promise_image' => "{$cdn}/ayylkpoa4i1f13zj8lduror8y6aw",
         'process_video' => 'https://framerusercontent.com/assets/MdOrsoktbl13lzdTePdGnGBVZDk.mp4',
@@ -62,8 +64,8 @@ return [
         'mid_cta_title' => 'Keep your property safe year-round',
         'mid_cta_text' => 'Ready to keep your property safe, beautiful, and stress-free all year long? Contact us today for a free quote!',
         'mid_cta_button' => 'Get a Quote Today',
-        'areas_badge' => 'Where We Service',
-        'areas_title' => 'Serving Spruce Grove and Surrounding Alberta communities',
+        'areas_badge' => 'Where We Serve',
+        'areas_title' => 'Serving Spruce Grove and Surrounding Alberta Communities',
         'areas_cta' => 'Schedule Your Lawn Care',
         'promise_title' => 'Our Promise',
         'about_badge' => 'Who we are',
@@ -108,6 +110,28 @@ return [
             'intro_heading' => 'Reliable snow removal for Spruce Grove homeowners who need safe, accessible driveways and walkways all winter long.',
             'hero_image' => 'https://framerusercontent.com/images/Ts7fX9HQbPaf76tZcEItj2hZS0.jpg',
             'mid_image' => "{$cdn}/vks0z2jzkx9onm5dyh13yxw2w0wa",
+            'detail_offerings' => [
+                [
+                    'title' => 'Driveway Clearing',
+                    'body' => 'We clear snow from residential driveways after every storm so you can leave and return home safely. Our crew removes packed snow and restores full vehicle access quickly.',
+                    'image' => '/assets/services/snow-removal/driveway-clearing.png',
+                ],
+                [
+                    'title' => 'Walkway & Sidewalk Clearing',
+                    'body' => 'Front steps, sidewalks, and side entrances are cleared with care to keep daily foot traffic safe. We focus on the paths your family uses most.',
+                    'image' => '/assets/services/snow-removal/walkway-sidewalk-clearing.png',
+                ],
+                [
+                    'title' => 'Manual Ice Chipping',
+                    'body' => 'When ice builds up on steps, landings, or walkways, we manually chip and remove it to reduce slip hazards that snow clearing alone cannot fix.',
+                    'image' => '/assets/services/snow-removal/manual-ice-chipping.png',
+                ],
+                [
+                    'title' => 'Walkway Safety Maintenance',
+                    'body' => 'We monitor high-traffic areas throughout the winter and maintain safe access with follow-up clearing, ice treatment, and attention to detail after each snowfall.',
+                    'image' => '/assets/services/snow-removal/walkway-safety-maintenance.png',
+                ],
+            ],
             'detail_features' => [
                 ['title' => 'Driveway and walkway clearing', 'body' => 'We clear snow from driveways, walkways, and entrances so you can get in and out safely after every storm.'],
                 ['title' => 'Ice melt application', 'body' => 'Targeted ice melt helps reduce slippery surfaces on steps, walkways, and high-traffic areas around your home.'],
@@ -138,7 +162,7 @@ return [
             'intro_heading' => 'Property clean-up and hauling that restores order to your yard and protects your landscape investment.',
             'hero_image' => "{$cdn}/vsiqj0myjoyn2yra3kh27gzdb8cv",
             'mid_image' => 'https://framerusercontent.com/images/BP9fvEIiXH7i0lLQWOqGSErZg9c.png',
-            'video' => null,
+            'video' => '/videos/property-cleanup-loop.mp4',
             'detail_features' => [
                 ['title' => 'Fall and spring cleanups', 'body' => 'Thorough seasonal cleanups remove debris and prepare your property for the months ahead.'],
                 ['title' => 'Year-round maintenance', 'body' => 'Ongoing property maintenance keeps outdoor spaces functional, tidy, and ready for every season.'],
@@ -216,7 +240,8 @@ return [
             'short' => 'Property cleanup and maintenance services to maintain your property\'s beauty year-round.',
             'features' => ['Fall and spring cleanups', 'Year-round maintenance', 'Protect your landscape investment'],
             'href' => '/services/property-cleanup-and-maintenance',
-            'image' => "{$cdn}/vsiqj0myjoyn2yra3kh27gzdb8cv",
+            'image' => '/videos/property-cleanup-loop.mp4',
+            'video' => '/videos/property-cleanup-loop.mp4',
             'coming_soon' => false,
             'reverse' => true,
             'icon' => 'cleanup',
@@ -244,14 +269,25 @@ return [
 
     'service_areas' => ['Spruce Grove', 'Edmonton', 'St. Albert', 'Stony Plain', 'Leduc', 'Acheson', 'Beaumont', 'Sherwood Park'],
 
+    'service_area_coordinates' => [
+        ['name' => 'Spruce Grove', 'lat' => 53.545, 'lng' => -113.901],
+        ['name' => 'Edmonton', 'lat' => 53.546, 'lng' => -113.494],
+        ['name' => 'St. Albert', 'lat' => 53.630, 'lng' => -113.626],
+        ['name' => 'Stony Plain', 'lat' => 53.526, 'lng' => -114.007],
+        ['name' => 'Leduc', 'lat' => 53.259, 'lng' => -113.549],
+        ['name' => 'Acheson', 'lat' => 53.560, 'lng' => -113.765],
+        ['name' => 'Beaumont', 'lat' => 53.358, 'lng' => -113.415],
+        ['name' => 'Sherwood Park', 'lat' => 53.517, 'lng' => -113.319],
+    ],
+
     'promise_text' => 'At Lawn Care and Snow Removal Experts, we provide all-season property care with one dedicated crew. From spring and summer lawn maintenance to fall cleanups and winter snow removal, we handle it all. Our team is committed to reliability, efficiency, and expert service, ensuring every property we care for is safe, beautiful, and well-maintained. We serve residential clients, delivering tailored solutions that fit your needs and keep your property looking its best year-round. One crew. Every season. Experts you can trust.',
 
     'home_faqs' => [
-        ['question' => 'Do you offer snow removal services for both residential and commercial?', 'answer' => 'Currently, we provide snow removal services exclusively for residential clients; however, we are actively exploring opportunities to expand into commercial properties.'],
-        ['question' => 'What lawn care services do you provide during the warmer months?', 'answer' => 'Our lawn care services include fertilization, manual weed control, lawn maintenance and seasonal maintenance to keep your lawn healthy and attractive.'],
-        ['question' => 'Can I schedule seasonal snow removal contracts?', 'answer' => 'Yes, we offer seasonal snow removal contracts to ensure your property stays safe and accessible throughout the winter months with no hassle.'],
-        ['question' => 'What services do you offer?', 'answer' => 'We provide all-season lawn care, property maintenance, and snow removal for residential properties. Our services include mowing, fertilizing, aeration, fall cleanups, edging, snow blowing, shoveling, and ice control. We will soon be offering junk removal as well.'],
-        ['question' => 'Are you available year-round?', 'answer' => 'Yes! We provide all-season service, keeping your property maintained and safe from spring through winter.'],
+        ['question' => 'Do you offer snow removal services for both residential and commercial?', 'answer' => 'We provide lawn care and summer property maintenance services for both residential and commercial clients. Currently, our snow removal services are available exclusively for residential properties.'],
+        ['question' => 'What lawn care services do you provide during the warmer months?', 'answer' => 'Our lawn care services include fertilization, manual weed control, lawn maintenance, and seasonal maintenance to keep your lawn healthy and attractive. We provide these services for both residential and commercial properties.'],
+        ['question' => 'Can I schedule seasonal snow removal contracts?', 'answer' => 'Yes, we offer seasonal snow removal contracts for residential properties to ensure your home stays safe and accessible throughout the winter months with no hassle.'],
+        ['question' => 'What services do you offer?', 'answer' => 'We provide lawn care and summer property maintenance for residential and commercial clients, including mowing, fertilizing, aeration, fall cleanups, edging, and seasonal maintenance. Snow removal — including snow blowing, shoveling, and ice control — is available for residential properties only. Junk removal is coming soon.'],
+        ['question' => 'Are you available year-round?', 'answer' => 'Yes! We provide all-season lawn care and property maintenance for residential and commercial clients, plus residential snow removal, keeping your property maintained and safe from spring through winter.'],
     ],
 
     'process_steps' => [
@@ -284,7 +320,7 @@ return [
     'projects' => [
         ['title' => 'Winter snow removal', 'text' => 'Driveways, walkways, and entrances cleared promptly so your property stays safe all season.', 'image' => "{$cdn}/h4whzdz0vvysnu3z78vhthh989lm"],
         ['title' => 'Seasonal lawn care', 'text' => 'Mowing, edging, and maintenance that keep your lawn healthy and looking its best.', 'image' => "{$cdn}/mpicv29757185otfeodqpwlunr97"],
-        ['title' => 'Property cleanup', 'text' => 'Fall cleanups and year-round maintenance to protect your landscape investment.', 'image' => "{$cdn}/blx0cinf9qe5h560puy84ampjpny"],
+        ['title' => 'Property cleanup', 'text' => 'Fall cleanups and year-round maintenance to protect your landscape investment.', 'image' => "{$harmone}/POlpQUGMrGr1PxBqlnM8DPOCcCQ3b51.png"],
     ],
 
     'testimonials' => [
@@ -350,7 +386,7 @@ return [
 
     'keyword_tags' => ['Year-round service', 'Snow removal', 'Lawn care', 'Property cleanup'],
 
-    'about_feature_image' => '/images/about-feature.jpg',
+    'about_feature_image' => '/assets/site/snow-feature.png?v=snow2026',
 
     'about_avatar_stack' => [
         ['src' => "{$cdn}/4s6ub6cjcrzxtjtbn48kmnh1h16r", 'class' => 'avatar-1'],
@@ -380,13 +416,13 @@ return [
         'founder_image' => "{$harmone}/wpbsOhrM61kLwoUUMryh0ThmMh07995.png",
         'stats_badge' => 'Our Stats',
         'stats_title' => 'Numbers that reflect our passion',
-        'stats_cta' => 'Contact us',
-        'stats_cta_href' => '/contact#quote',
+        'stats_cta' => 'Get Quote',
+        'stats_cta_href' => '/get-quote',
         'stats_decor' => "{$harmone}/HjFE0k09aumATbaplUA1vVO2ZYa09e.png",
         'story_badge' => 'Our story',
         'story_title' => 'Our journey is rooted in quality, reliability, and a passion for year-round property care',
         'story_image' => "{$harmone}/aV5lvl3cgprTGJ3Z6r2YH2Rj0EQ7835.png",
-        'story_cta' => 'Book now',
+        'story_cta' => 'Get Quote',
         'team_badge' => 'Our team section',
         'team_title' => 'Experts who bring ideas to life',
         'faq_badge' => 'Frequently asked question',
@@ -409,9 +445,9 @@ return [
     ],
 
     'about_timeline' => [
-        ['year' => '2012', 'title' => 'Where it all began', 'text' => 'Our team was founded with a vision to provide reliable, all-season property care for Alberta homeowners.'],
-        ['year' => '2017', 'title' => 'Growing together', 'text' => 'Expanded our services and team to deliver exceptional lawn care and snow removal across the region.'],
-        ['year' => '2024', 'title' => 'Shaping the future', 'text' => 'Continuing to serve Spruce Grove and surrounding communities with one dedicated crew for every season.'],
+        ['year' => '2012', 'icon' => 'founding', 'title' => 'Where it all began', 'text' => 'Our team was founded with a vision to provide reliable, all-season property care for Alberta homeowners.'],
+        ['year' => '2017', 'icon' => 'growth', 'title' => 'Growing together', 'text' => 'Expanded our services and team to deliver exceptional lawn care and snow removal across the region.'],
+        ['year' => '2024', 'icon' => 'future', 'title' => 'Shaping the future', 'text' => 'Continuing to serve Spruce Grove and surrounding communities with one dedicated crew for every season.'],
     ],
 
     'about_team' => [
@@ -421,20 +457,34 @@ return [
     ],
 
     'about_faqs' => [
-        ['question' => 'How long does a landscaping project take?', 'answer' => 'Every project timeline depends on its size and complexity, but most residential property care visits and seasonal projects are completed efficiently while maintaining the highest quality standards.'],
-        ['question' => 'What services do you offer?', 'answer' => 'We provide all-season lawn care, property maintenance, and snow removal for residential properties. Our services include mowing, fertilizing, fall cleanups, edging, snow blowing, shoveling, and ice control.'],
-        ['question' => 'Do you provide custom property care solutions?', 'answer' => 'Yes, we tailor every service plan to your property, preferences, budget, and seasonal needs so your outdoor space stays safe and beautiful year-round.'],
-        ['question' => 'How do I request a consultation?', 'answer' => 'You can request a consultation by contacting our team, sharing your property needs, and we will follow up with a clear quote and next steps.'],
-        ['question' => 'Are your practices eco-friendly?', 'answer' => 'Yes, we use responsible property care practices, including efficient equipment use, careful application of treatments, and sustainable maintenance approaches where possible.'],
+        ['question' => 'Do you offer snow removal services for both residential and commercial?', 'answer' => 'We provide lawn care and summer property maintenance services for both residential and commercial clients. Currently, our snow removal services are available exclusively for residential properties.'],
+        ['question' => 'What services do you offer?', 'answer' => 'We provide lawn care and summer property maintenance for residential and commercial clients, including mowing, fertilizing, aeration, fall cleanups, edging, and seasonal maintenance. Snow removal — including snow blowing, shoveling, and ice control — is available for residential properties only. Junk removal is coming soon.'],
+        ['question' => 'What lawn care services do you provide during the warmer months?', 'answer' => 'Our lawn care services include fertilization, manual weed control, lawn maintenance, and seasonal maintenance to keep your lawn healthy and attractive. We provide these services for both residential and commercial properties.'],
+        ['question' => 'Can I schedule seasonal snow removal contracts?', 'answer' => 'Yes, we offer seasonal snow removal contracts for residential properties to ensure your home stays safe and accessible throughout the winter months with no hassle.'],
+        ['question' => 'How do I request a consultation or quote?', 'answer' => 'You can request a quote through our website, call us at (587) 879-5296, or email our team. We will review your property needs and follow up with a clear estimate and next steps.'],
     ],
 
     'blogs_page' => [
         'badge' => 'our blogs',
-        'title' => 'Tips for better garden spaces',
+        'title' => 'Lawn care and snow removal tips',
         'hero_image' => "{$harmone}/LM0vRNvdYtrVYp26InVBjG2Om38c9a7.png",
     ],
 
     'blog_posts' => [
+        [
+            'slug' => 'professional-lawn-care-tips-for-a-healthier-yard-in-alberta',
+            'title' => 'Professional lawn care tips for a healthier yard in Alberta',
+            'author' => 'Emma Collins',
+            'date' => 'August 8, 2026',
+            'image' => "{$harmone}/eW46cLJR4pk9p8HZgiCoj2s2cd51e.png",
+        ],
+        [
+            'slug' => 'why-seasonal-snow-removal-contracts-make-sense-for-spruce-grove-homeowners',
+            'title' => 'Why seasonal snow removal contracts make sense for Spruce Grove homeowners',
+            'author' => 'Oliver Hughes',
+            'date' => 'July 15, 2026',
+            'image' => "{$harmone}/kah8B3dDQ5Vowbe1nFgXhVA5Pw5c3e.png",
+        ],
         [
             'slug' => 'how-to-create-a-beautiful-and-healthy-garden-that-thrives-throughout-every-season',
             'title' => 'How to create a beautiful and healthy garden That thrives throughout every season',
@@ -477,6 +527,34 @@ return [
             'date' => 'June 6, 2026',
             'image' => "{$harmone}/TNPcls9dCtDTJglwTPx0YH983b51.png",
         ],
+    ],
+
+    'quote_page' => [
+        'title' => 'Get Your Quote',
+        'intro' => 'Tell us about your property and the services you need. We will follow up with a clear quote for lawn care, cleanup, or snow removal.',
+        'step_contact' => 'Contact information',
+        'step_service' => 'Service details',
+        'step_review' => 'Review & submit',
+        'submit_label' => 'Submit quote request',
+        'thanks_title' => 'Thanks — your quote request was sent.',
+        'thanks_text' => 'A team member will follow up shortly. For faster service, call us directly.',
+        'sms_disclosure' => 'By providing your phone number, you agree to receive transactional text messages about your service request from Lawn Care and Snow Removal Experts. Message frequency varies. Message and data rates may apply. Reply STOP to opt out of non-marketing texts.',
+    ],
+
+    'provinces' => [
+        'AB' => 'Alberta',
+        'BC' => 'British Columbia',
+        'MB' => 'Manitoba',
+        'NB' => 'New Brunswick',
+        'NL' => 'Newfoundland and Labrador',
+        'NS' => 'Nova Scotia',
+        'NT' => 'Northwest Territories',
+        'NU' => 'Nunavut',
+        'ON' => 'Ontario',
+        'PE' => 'Prince Edward Island',
+        'QC' => 'Quebec',
+        'SK' => 'Saskatchewan',
+        'YT' => 'Yukon',
     ],
 
     'contact_badge_icon' => 'https://framerusercontent.com/images/UJ2Jsj4CDcgmUz0qfixGQSZsp0s.svg?width=18&height=18',
@@ -555,10 +633,21 @@ return [
     'footer_contact_links' => [
         ['href' => 'tel:+15878795296', 'label' => '(587) 879-5296'],
         ['href' => 'mailto:lawncareandsnowremovalexperts@gmail.com', 'label' => 'lawncareandsnowremovalexperts@gmail.com'],
-        ['href' => '/contact', 'label' => 'Get a quote'],
+        ['href' => '/get-quote', 'label' => 'Get a quote'],
         [
             'href' => 'https://maps.google.com/?q=PO+Box+3683+Spruce+Grove+AB+T7X+3A9',
             'label' => 'PO Box 3683, Spruce Grove, AB T7X 3A9',
+            'external' => true,
+        ],
+    ],
+
+    'social_links' => [
+        ['label' => 'Facebook', 'href' => '#', 'network' => 'facebook'],
+        ['label' => 'Instagram', 'href' => '#', 'network' => 'instagram'],
+        [
+            'label' => 'Google',
+            'href' => 'https://maps.google.com/?q=PO+Box+3683+Spruce+Grove+AB+T7X+3A9',
+            'network' => 'google',
             'external' => true,
         ],
     ],
