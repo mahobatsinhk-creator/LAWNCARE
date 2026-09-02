@@ -29,10 +29,6 @@
     <div class="harmone-footer-main">
         <div class="harmone-footer-main__inner">
             <div class="harmone-footer-brand">
-                <a href="/" class="harmone-footer-brand__link" aria-label="{{ $site['name'] }}">
-                    <img src="{{ $site['logo'] }}" alt="" class="harmone-footer-brand__logo" width="72" height="72"
-                        loading="lazy">
-                </a>
                 <p class="harmone-footer-brand__text">{{ $site['description'] }}</p>
 
                 <div class="harmone-footer-newsletter">
@@ -82,36 +78,7 @@
                     </li>
                 </ul>
 
-                <div class="harmone-footer-social" aria-label="Social links">
-                    @foreach ($social_links as $social)
-                        <a href="{{ $social['href'] }}" class="harmone-footer-social__link"
-                            aria-label="{{ $social['label'] }}"
-                            @if (! empty($social['external'])) target="_blank" rel="noopener noreferrer" @endif>
-                            @switch($social['network'])
-                                @case('facebook')
-                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-                                        <path fill="currentColor"
-                                            d="M14 8.5V7.2c0-.7.5-1.2 1.2-1.2H17V3h-2.2C12.7 3 11 4.8 11 7v1.5H9v3h2V21h3v-10.5h2.6L17 8.5h-3z" />
-                                    </svg>
-                                    @break
-
-                                @case('instagram')
-                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-                                        <path fill="currentColor"
-                                            d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 4.8A4.2 4.2 0 1 0 16.2 12 4.2 4.2 0 0 0 12 7.8zm0 1.8a2.4 2.4 0 1 1-2.4 2.4A2.4 2.4 0 0 1 12 9.6zm4.65-2.45a1 1 0 1 0-1 1 1 1 0 0 0 1-1z" />
-                                    </svg>
-                                    @break
-
-                                @case('google')
-                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden>
-                                        <path fill="currentColor"
-                                            d="M12 3a9 9 0 0 0-6.36 15.36l1.2-1.2A7 7 0 1 1 17 10.5h-7v2.5h9.1A9 9 0 0 0 12 3z" />
-                                    </svg>
-                                    @break
-                            @endswitch
-                        </a>
-                    @endforeach
-                </div>
+                @include('partials.harmone-footer-social')
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HeroSection } from "@/components/home/HeroSection";
 import { JsonLd } from "@/components/JsonLd";
 import { QuoteForm } from "@/components/QuoteForm";
 import { getSiteContent } from "@/lib/content";
@@ -20,42 +21,7 @@ export default async function HomePage() {
     <>
       <JsonLd data={faqPageSchema(homeFaqs)} />
 
-      <section className="relative min-h-[72vh] overflow-hidden md:min-h-[78vh]">
-        <Image
-          src={site.heroImage}
-          alt="Uploaded image"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/40" aria-hidden />
-        <div className="relative mx-auto flex min-h-[72vh] max-w-[720px] flex-col items-center justify-center px-5 pb-20 pt-16 text-center md:min-h-[78vh] md:px-8 md:pb-28">
-          <h1
-            className="animate-rise font-display text-[36px] font-bold uppercase leading-[1.2] text-white md:text-[44px]"
-            style={{ color: "#ffffff" }}
-          >
-            {site.tagline}
-          </h1>
-          <p className="animate-rise-delay mt-5 max-w-2xl text-base font-normal leading-relaxed text-white md:text-lg">
-            {home.heroSubtitle}
-          </p>
-          <Link href="/contact" className="btn-light animate-rise-delay mt-8">
-            {home.heroCta}
-          </Link>
-        </div>
-        <svg
-          className="hero-wave"
-          viewBox="0 0 1440 72"
-          preserveAspectRatio="none"
-          aria-hidden
-        >
-          <path
-            fill="currentColor"
-            d="M0,40 C180,70 360,10 540,28 C720,46 900,70 1080,48 C1260,26 1350,18 1440,30 L1440,72 L0,72 Z"
-          />
-        </svg>
-      </section>
+      <HeroSection site={site} subtitle={home.heroSubtitle} />
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
@@ -95,7 +61,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="bg-canvas-deep px-5 py-16 md:px-8 md:py-24">
+      <section
+        id="services"
+        className="bg-canvas-deep scroll-mt-24 px-5 py-16 md:px-8 md:py-24"
+      >
         <div className="mx-auto max-w-6xl">
           <span className="badge">{home.servicesBadge}</span>
           <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">

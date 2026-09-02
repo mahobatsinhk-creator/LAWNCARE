@@ -1,9 +1,8 @@
 @php
-    $featured_post = $blog_posts[0] ?? null;
-    $side_posts = array_slice($blog_posts, 1, 2);
+    $home_posts = array_slice($blog_posts, 0, 3);
 @endphp
 
-@if ($featured_post)
+@if ($home_posts !== [])
     <section id="blogs" class="harmone-home-blogs section-shell">
         <div class="harmone-home-blogs__inner section-inner">
             @include('partials.harmone-section-header', [
@@ -14,47 +13,14 @@
                 'layout' => 'split',
             ])
 
-            <div class="harmone-home-blogs__layout">
-                <article class="harmone-home-blog-featured">
-                    <a href="{{ route('blogs.show', $featured_post['slug']) }}" class="harmone-home-blog-featured__card">
-                        <div class="harmone-home-blog-featured__media">
-                            <div class="harmone-home-blog-featured__media-zoom">
-                                <img src="{{ $featured_post['image'] }}" alt="" loading="lazy">
-                            </div>
-                        </div>
-                        <div class="harmone-home-blog-featured__body">
-                            <p class="harmone-home-blog-featured__meta">{{ $featured_post['date'] }}</p>
-                            <h3 class="harmone-home-blog-featured__title">{{ $featured_post['title'] }}</h3>
-                        </div>
-                    </a>
-                </article>
-
-                @if ($side_posts !== [])
-                    <div class="harmone-home-blogs__stack">
-                        @foreach ($side_posts as $index => $post)
-                            <article
-                                class="harmone-home-blog-compact{{ $index === 1 ? ' harmone-home-blog-compact--scale-in' : '' }}"
-                                @if ($index === 1) data-blog-scale-in @endif>
-                                <a href="{{ route('blogs.show', $post['slug']) }}" class="harmone-home-blog-compact__card">
-                                    <div class="harmone-home-blog-compact__media">
-                                        <div class="harmone-home-blog-compact__media-zoom">
-                                            <img src="{{ $post['image'] }}" alt="" loading="lazy">
-                                        </div>
-                                    </div>
-                                    <div class="harmone-home-blog-compact__body">
-                                        <div class="harmone-home-blog-compact__copy">
-                                            <p class="harmone-home-blog-compact__meta">{{ $post['date'] }}</p>
-                                            <h4 class="harmone-home-blog-compact__title">{{ $post['title'] }}</h4>
-                                        </div>
-                                        <span class="harmone-home-blog-compact__arrow" aria-hidden="true">
-                                            <img src="{{ $blog_arrow_icon }}" alt="" width="25" height="25">
-                                        </span>
-                                    </div>
-                                </a>
-                            </article>
+            <div class="harmone-blogs-grid-section harmone-home-blogs__grid-section">
+                <div class="harmone-blogs-grid-section__inner">
+                    <div class="harmone-blogs-grid">
+                        @foreach ($home_posts as $post)
+                            @include('partials.harmone-blog-card', ['post' => $post, 'heading' => 'h3'])
                         @endforeach
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </section>

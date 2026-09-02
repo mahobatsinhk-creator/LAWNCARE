@@ -19,9 +19,15 @@ export function SiteShell({
     return <>{children}</>;
   }
 
+  const isHome = pathname === "/";
+
   return (
     <>
-      <Header site={content.site} homeServices={content.homeServices} />
+      <Header
+        site={content.site}
+        homeServices={content.homeServices}
+        overlay={isHome}
+      />
       <main className="flex-1">{children}</main>
       <Footer site={content.site} />
     </>

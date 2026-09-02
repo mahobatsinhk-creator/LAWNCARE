@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Poppins } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteShell } from "@/components/SiteShell";
 import { getSiteContent } from "@/lib/content";
@@ -12,7 +12,7 @@ const display = Poppins({
   weight: ["500", "600", "700"],
 });
 
-const sans = Open_Sans({
+const sans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
