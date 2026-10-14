@@ -1,28 +1,62 @@
 @extends('layouts.app')
 
-@section('title', $post['title'] . ' — ' . $site['name'])
+@section('title', $post['seo_title'] ?? ($post['title'] . ' — ' . $site['name']))
+@section('meta_description', $post['meta_description'] ?? $site['description'])
+@section('canonical', url('/blogs/'.$post['slug']))
+@section('og_type', 'article')
+@section('og_image', url($post['image'] ?? ($site['logo'] ?? '/assets/site/logo-header.png')))
+
+@push('head')
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'BlogPosting',
+            'headline' => $post['title'],
+            'description' => $post['meta_description'] ?? $site['description'],
+            'image' => url($post['image'] ?? ''),
+            'author' => [
+                '@type' => 'Organization',
+                'name' => $post['author'] ?? $site['name'],
+            ],
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => $site['name'],
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => url('/assets/site/logo-header.png'),
+                ],
+            ],
+            'datePublished' => \Illuminate\Support\Carbon::parse($post['date'])->toIso8601String(),
+            'dateModified' => \Illuminate\Support\Carbon::parse($post['date'])->toIso8601String(),
+            'mainEntityOfPage' => url('/blogs/'.$post['slug']),
+        ], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
+    </script>
+@endpush
 
 @section('content')
-    <article class="harmone-blog-detail">
+    <article class="harmone-blog-detail" itemscope itemtype="https://schema.org/BlogPosting">
         {{-- Hero --}}
         <section class="harmone-blog-detail__hero" data-reveal-group>
             <div class="harmone-blog-detail__hero-inner">
                 <p class="harmone-blog-detail__breadcrumb harmone-reveal" data-reveal="slide-left">
                     <a href="{{ route('blogs.index') }}">Blog details</a>
                 </p>
-                <h1 class="harmone-blog-detail__hero-title">
+                <h1 class="harmone-blog-detail__hero-title" itemprop="headline">
                     @foreach (preg_split('/\s+/', trim($post['title'])) as $index => $word)
                         <span class="harmone-reveal-word" style="--word-index: {{ $index }}">{{ $word }} </span>
                     @endforeach
                 </h1>
 
                 <div class="harmone-blog-detail__hero-media harmone-reveal" data-reveal="fade-up">
-                    <img src="{{ $post['image'] }}" alt="{{ $post['title'] }}" loading="eager">
+                    <img src="{{ $post['image'] }}" alt="{{ $post['image_alt'] ?? $post['title'] }}" loading="eager" itemprop="image">
                 </div>
 
                 <div class="harmone-blog-detail__hero-meta harmone-reveal" data-reveal="fade-up" data-reveal-delay="120">
                     <div class="harmone-blog-detail__hero-meta-copy">
-                        <p><strong>Published</strong> <span>{{ $post['date'] }}</span></p>
+                        <p><strong>Published</strong> <span itemprop="datePublished">{{ $post['date'] }}</span></p>
+                        @if (! empty($post['author']))
+                            <p><strong>Author</strong> <span itemprop="author">{{ $post['author'] }}</span></p>
+                        @endif
                         @if (! empty($post['reading_time']))
                             <p><strong>{{ $post['reading_time'] }}</strong> <span>Reading time</span></p>
                         @endif
@@ -55,8 +89,8 @@
             <section class="harmone-blog-detail__related">
                 <div class="harmone-blog-detail__related-inner">
                     <div class="harmone-blog-detail__related-header">
-                        <h2>Related blogs</h2>
-                        <a href="{{ route('blogs.index') }}">View more</a>
+                        <h2>Related Blogs</h2>
+                        <a href="{{ route('blogs.index') }}">View More</a>
                     </div>
                     <div class="harmone-blogs-grid">
                         @foreach ($related_posts as $related)

@@ -11,9 +11,9 @@
                     <tr>
                         <th>Service</th>
                         <th>Slug</th>
-                        <th>Features</th>
+                        <th>Content</th>
                         <th>Status</th>
-                        <th>Page</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,7 +21,7 @@
                         <tr>
                             <td>{{ $service['title'] }}</td>
                             <td>{{ $service['slug'] ?? '—' }}</td>
-                            <td>{{ count($service['features'] ?? []) }} listed / {{ $service['detail_features_count'] ?? 0 }} detail</td>
+                            <td>{{ $service['offerings_count'] ?? 0 }} offerings / {{ $service['features_count'] ?? 0 }} features</td>
                             <td>
                                 @if ($service['coming_soon'] ?? false)
                                     <span class="admin-badge admin-badge--contacted">Coming soon</span>
@@ -30,9 +30,16 @@
                                 @endif
                             </td>
                             <td>
+                                @if (! empty($service['slug']))
+                                    <a href="{{ route('admin.services.edit', $service['slug']) }}" class="admin-link">Edit</a>
+                                @endif
                                 @if (! empty($service['href']))
+                                    @if (! empty($service['slug']))
+                                        <span aria-hidden="true"> · </span>
+                                    @endif
                                     <a href="{{ $service['href'] }}" target="_blank" rel="noopener">View page</a>
-                                @else
+                                @endif
+                                @if (empty($service['slug']) && empty($service['href']))
                                     —
                                 @endif
                             </td>

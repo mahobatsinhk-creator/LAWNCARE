@@ -31,27 +31,26 @@ $serviceDetails['snow-removal-services'] = array_merge(
     $serviceDetails['snow-removal-services'] ?? [],
     [
         'intro_heading' => 'Reliable snow removal for Spruce Grove homeowners who need safe, accessible driveways and walkways all winter long.',
-        'hero_image' => 'https://framerusercontent.com/images/Ts7fX9HQbPaf76tZcEItj2hZS0.jpg',
         'detail_offerings' => [
             [
                 'title' => 'Driveway Clearing',
                 'body' => 'We clear snow from residential driveways after every storm so you can leave and return home safely. Our crew removes packed snow and restores full vehicle access quickly.',
-                'image' => '/assets/services/snow-removal/driveway-clearing.png',
+                'image' => '/assets/services/snow-removal/driveway-clearing.png?v=logo2026',
             ],
             [
                 'title' => 'Walkway & Sidewalk Clearing',
                 'body' => 'Front steps, sidewalks, and side entrances are cleared with care to keep daily foot traffic safe. We focus on the paths your family uses most.',
-                'image' => '/assets/services/snow-removal/walkway-sidewalk-clearing.png',
+                'image' => '/assets/services/snow-removal/walkway-sidewalk-clearing.png?v=logo2026',
             ],
             [
                 'title' => 'Manual Ice Chipping',
                 'body' => 'When ice builds up on steps, landings, or walkways, we manually chip and remove it to reduce slip hazards that snow clearing alone cannot fix.',
-                'image' => '/assets/services/snow-removal/manual-ice-chipping.png',
+                'image' => '/assets/services/snow-removal/manual-ice-chipping.png?v=logo2026',
             ],
             [
                 'title' => 'Walkway Safety Maintenance',
                 'body' => 'We monitor high-traffic areas throughout the winter and maintain safe access with follow-up clearing, ice treatment, and attention to detail after each snowfall.',
-                'image' => '/assets/services/snow-removal/walkway-safety-maintenance.png',
+                'image' => '/assets/services/snow-removal/walkway-safety-maintenance.png?v=logo2026',
             ],
         ],
     ]

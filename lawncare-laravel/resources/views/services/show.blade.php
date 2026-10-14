@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('title', $service['title'] . ' — ' . $site['name'])
+@section('canonical', url('/services/'.$service['slug']))
+@section('og_image', url($service['hero_image'] ?? $service['image'] ?? ($site['logo'] ?? '/assets/site/logo-header.png')))
 
 @section('content')
     <article class="greenly-service-detail">
@@ -20,7 +22,7 @@
 
         <div class="greenly-service-detail__back-wrap" data-reveal-group>
             <div class="greenly-service-detail__inner">
-                <a href="{{ route('services.index') }}" class="greenly-service-detail__back harmone-reveal"
+                <a href="/#services" class="greenly-service-detail__back harmone-reveal"
                     data-reveal="fade-up">
                     &larr; {{ $service_detail_page['back_label'] }}
                 </a>

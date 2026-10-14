@@ -12,7 +12,7 @@
         <div class="greenly-service-detail__hero-media harmone-reveal" data-reveal="slide-in" data-reveal-delay="120">
             @if (! empty($service['video']))
                 <video autoplay loop muted playsinline preload="auto"
-                    poster="{{ $service['hero_image'] ?? $service['image'] }}">
+                    @if (! empty($service['hero_image'])) poster="{{ $service['hero_image'] }}" @endif>
                     <source src="{{ $service['video'] }}" type="video/mp4">
                 </video>
             @else

@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
     <title>@yield('title', 'Admin') — Lawn Care Admin</title>
     <link rel="icon" href="/favicon-32x32.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     @yield('head')
-    <link rel="stylesheet" href="/assets/admin/admin.css?v=7">
+    <link rel="stylesheet" href="/assets/admin/admin.css?v=9">
 </head>
 <body class="admin-body">
     <div class="admin-shell">

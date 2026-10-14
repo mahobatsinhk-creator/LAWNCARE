@@ -31,13 +31,12 @@ $serviceDetails['lawn-care-and-maintenance'] = array_merge(
     $serviceDetails['lawn-care-and-maintenance'] ?? [],
     [
         'intro_heading' => 'Professional lawn services designed to keep your property healthy, clean, and well maintained throughout the growing season.',
-        'hero_image' => 'https://framerusercontent.com/images/ViXmTB1nT2P2h03owWL2ciH4WY.jpg',
         'offerings_lead' => 'Our lawn care program covers the essential services your yard needs to stay lush, green, and well groomed from spring through fall.',
         'detail_offerings' => [
             [
                 'title' => 'Lawn Mowing and Trimming',
                 'body' => 'Regular mowing at the proper height, with trimming around beds, fences, and obstacles for a clean, finished look every visit.',
-                'image' => '/assets/services/lawn-care/lawn-mowing-trimming.png',
+                'image' => '/assets/services/lawn-care/lawn-mowing-trimming.png?v=branded2026',
             ],
             [
                 'title' => 'Lawn Edging',

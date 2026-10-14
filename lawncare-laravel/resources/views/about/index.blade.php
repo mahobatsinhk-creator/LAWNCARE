@@ -79,47 +79,6 @@
         </div>
     </section>
 
-    {{-- Stats --}}
-    <section class="harmone-about-page-stats" data-reveal-group>
-        <div class="harmone-about-page-stats__inner">
-            <div class="harmone-about-page-stats__header">
-                <div>
-                    <span class="harmone-about-page-stats__badge harmone-about-reveal" data-about-reveal="slide-left">{{ $about_page['stats_badge'] }}</span>
-                    <h2 class="harmone-about-page-stats__title harmone-about-reveal" data-about-reveal="fade-up">{{ $about_page['stats_title'] }}</h2>
-                </div>
-                <a href="{{ $about_page['stats_cta_href'] }}" class="harmone-btn-primary harmone-about-reveal" data-about-reveal="fade-up" data-reveal-delay="120">{{ $about_page['stats_cta'] }}</a>
-            </div>
-            <div class="harmone-about-page-stats__grid">
-                @foreach ($about_stats as $stat)
-                    <article class="harmone-about-page-stat-card harmone-about-reveal" data-about-reveal="stat"
-                        data-reveal-delay="{{ $loop->index * 120 }}">
-                        <p class="harmone-about-page-stat-card__value">{{ $stat['value'] }}</p>
-                        <p class="harmone-about-page-stat-card__label">{{ $stat['label'] }}</p>
-                        <p class="harmone-about-page-stat-card__text">{{ $stat['text'] }}</p>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    {{-- Founder --}}
-    <section class="harmone-about-page-founder" data-reveal-group>
-        <div class="harmone-about-page-founder__inner">
-            <div class="harmone-about-badge harmone-about-reveal" data-about-reveal="slide-left">
-                <img src="{{ $section_icon }}" alt="" width="24" height="24" aria-hidden>
-                <span>{{ $about_page['founder_badge'] }}</span>
-            </div>
-            <blockquote class="harmone-about-page-founder__quote" data-word-reveal>{{ $about_page['founder_quote'] }}</blockquote>
-            <div class="harmone-about-page-founder__author harmone-about-reveal" data-about-reveal="fade-up">
-                <img src="{{ $about_page['founder_image'] }}" alt="" width="80" height="80" loading="lazy">
-                <div>
-                    <p class="harmone-about-page-founder__name">{{ $about_page['founder_name'] }}</p>
-                    <p class="harmone-about-page-founder__role">{{ $about_page['founder_role'] }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     {{-- FAQ --}}
     <section class="harmone-about-page-faq" data-reveal-group>
         <div class="harmone-about-page-faq__inner">

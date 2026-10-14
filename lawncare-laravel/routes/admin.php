@@ -21,6 +21,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::get('/services', [ServiceAdminController::class, 'index'])->name('services.index');
+    Route::get('/services/{slug}/edit', [ServiceAdminController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{slug}', [ServiceAdminController::class, 'update'])->name('services.update');
     Route::get('/content', [ContentAdminController::class, 'index'])->name('content.index');
     Route::get('/content/{section}', [ContentAdminController::class, 'edit'])->name('content.edit');
     Route::put('/content/{section}', [ContentAdminController::class, 'update'])->name('content.update');

@@ -51,6 +51,10 @@ class SiteData
                 'author_bio' => $public['author_bio'] ?? ($legacy['author_bio'] ?? null),
                 'reading_time' => $public['reading_time'] ?? ($legacy['reading_time'] ?? null),
                 'author_avatar' => $public['author_avatar'] ?? ($legacy['author_avatar'] ?? null),
+                'seo_title' => $legacy['seo_title'] ?? ($public['seo_title'] ?? null),
+                'meta_description' => $legacy['meta_description'] ?? ($public['meta_description'] ?? null),
+                'image_alt' => $legacy['image_alt'] ?? ($public['image_alt'] ?? null),
+                'show_toc' => $legacy['show_toc'] ?? ($public['show_toc'] ?? false),
             ]);
         }
 

@@ -185,139 +185,27 @@ function initForms() {
 }
 
 function initScrollReveal() {
-    const revealItems = document.querySelectorAll('.harmone-reveal, .harmone-reveal-word');
-    if (!revealItems.length) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        revealItems.forEach((el) => el.classList.add('is-visible'));
-        return;
-    }
-
-    if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: view()')) {
-        document.documentElement.classList.add('harmone-scroll-reveal');
-        revealItems.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
-                el.classList.add('is-visible');
-            }
-        });
-        return;
-    }
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-
-                const group = entry.target;
-                const items = group.matches('[data-reveal-group]')
-                    ? [
-                          ...group.querySelectorAll('.harmone-reveal'),
-                          ...group.querySelectorAll('.harmone-reveal-word'),
-                      ]
-                    : [group];
-
-                items.forEach((item, index) => {
-                    const extraDelay = Number(item.dataset.revealDelay || 0);
-                    const delay = extraDelay + index * 90;
-
-                    window.setTimeout(() => {
-                        item.classList.add('is-visible');
-                    }, delay);
-                });
-
-                observer.unobserve(group);
-            });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
-    );
-
-    document.querySelectorAll('[data-reveal-group]').forEach((group) => {
-        observer.observe(group);
+    document.querySelectorAll('.harmone-reveal, .harmone-reveal-word').forEach((el) => {
+        el.classList.add('is-visible');
     });
 }
 
 function initContactCardReveal() {
-    const cards = document.querySelectorAll('[data-contact-reveal]');
-    if (!cards.length) return;
-
-    const show = (card) => card.classList.add('is-visible');
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        cards.forEach(show);
-        return;
-    }
-
-    if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: view()')) {
-        document.documentElement.classList.add('harmone-contact-scroll');
-    }
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-
-                const card = entry.target;
-                const delay = Number(card.style.getPropertyValue('--contact-reveal-index') || 0) * 120;
-
-                window.setTimeout(() => show(card), delay);
-                observer.unobserve(card);
-            });
-        },
-        { threshold: 0.08, rootMargin: '0px 0px -5% 0px' },
-    );
-
-    cards.forEach((card) => observer.observe(card));
+    document.querySelectorAll('[data-contact-reveal]').forEach((card) => {
+        card.classList.add('is-visible');
+    });
 }
 
 function initBlogScaleIn() {
-    const cards = document.querySelectorAll('[data-blog-scale-in]');
-    if (!cards.length) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        cards.forEach((card) => card.classList.add('is-visible'));
-        return;
-    }
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            });
-        },
-        { threshold: 0.2, rootMargin: '0px 0px -8% 0px' },
-    );
-
-    cards.forEach((card) => observer.observe(card));
+    document.querySelectorAll('[data-blog-scale-in]').forEach((card) => {
+        card.classList.add('is-visible');
+    });
 }
 
 function initServiceCards() {
-    const cards = document.querySelectorAll('.leapfly-service-card[data-animate], .leapfly-service-row[data-animate]');
-    if (!cards.length) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        cards.forEach((card) => card.classList.add('is-visible'));
-        return;
-    }
-
-    if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: view()')) {
-        return;
-    }
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            });
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
-    );
-
-    cards.forEach((card) => observer.observe(card));
+    document.querySelectorAll('.leapfly-service-card[data-animate], .leapfly-service-row[data-animate]').forEach((card) => {
+        card.classList.add('is-visible');
+    });
 }
 
 function initAboutPageScroll() {
@@ -338,64 +226,15 @@ function initAboutWordReveal(reducedMotion) {
         const words = text.split(/\s+/);
 
         block.innerHTML = words
-            .map((word) => `<span class="harmone-about-word">${word}</span>`)
+            .map((word) => `<span class="harmone-about-word is-visible">${word}</span>`)
             .join(' ');
-
-        if (reducedMotion) {
-            block.querySelectorAll('.harmone-about-word').forEach((word) => word.classList.add('is-visible'));
-            return;
-        }
-
-        const spans = block.querySelectorAll('.harmone-about-word');
-        const reveal = () => {
-            spans.forEach((span, index) => {
-                window.setTimeout(() => span.classList.add('is-visible'), index * 60);
-            });
-        };
-
-        if (block.closest('[data-about-hero]')) {
-            window.requestAnimationFrame(reveal);
-            return;
-        }
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (!entries.some((entry) => entry.isIntersecting)) return;
-                reveal();
-                observer.disconnect();
-            },
-            { threshold: 0.2, rootMargin: '0px 0px -8% 0px' },
-        );
-
-        observer.observe(block);
     });
 }
 
 function initAboutScrollReveals(reducedMotion) {
-    const items = document.querySelectorAll('[data-about-reveal]');
-    if (!items.length) return;
-
-    if (reducedMotion) {
-        items.forEach((item) => item.classList.add('is-visible'));
-        return;
-    }
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-
-                const item = entry.target;
-                const delay = Number(item.dataset.revealDelay || 0);
-
-                window.setTimeout(() => item.classList.add('is-visible'), delay);
-                observer.unobserve(item);
-            });
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -10% 0px' },
-    );
-
-    items.forEach((item) => observer.observe(item));
+    document.querySelectorAll('[data-about-reveal]').forEach((item) => {
+        item.classList.add('is-visible');
+    });
 }
 
 function initAboutHeroParallax(reducedMotion) {
@@ -406,7 +245,7 @@ function initAboutHeroParallax(reducedMotion) {
     const update = () => {
         const rect = hero.getBoundingClientRect();
         const progress = Math.min(1, Math.max(0, -rect.top / Math.max(rect.height, 1)));
-        parallax.style.transform = `translate3d(0, ${progress * rect.height * 0.35}px, 0) scale(1.08)`;
+        parallax.style.transform = `translate3d(0, ${progress * rect.height * 0.35}px, 0)`;
     };
 
     update();

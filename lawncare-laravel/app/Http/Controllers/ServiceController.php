@@ -7,11 +7,6 @@ use Illuminate\View\View;
 
 class ServiceController extends Controller
 {
-    public function index(): View
-    {
-        return view('services.index', SiteData::all());
-    }
-
     public function show(string $slug): View
     {
         $site = SiteData::all();

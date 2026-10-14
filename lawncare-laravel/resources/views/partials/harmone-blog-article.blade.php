@@ -1,7 +1,31 @@
+@php
+    $tocItems = [];
+    foreach ($post['sections'] ?? [] as $section) {
+        if (($section['type'] ?? '') === 'heading' && ! empty($section['text'])) {
+            $tocItems[] = [
+                'id' => \Illuminate\Support\Str::slug($section['text']),
+                'text' => $section['text'],
+            ];
+        }
+    }
+@endphp
+
+@if (! empty($post['show_toc']) && count($tocItems) > 2)
+    <nav class="harmone-blog-detail__toc harmone-reveal" data-reveal="fade-up" aria-label="Table of contents">
+        <p class="harmone-blog-detail__toc-title">In this article</p>
+        <ol class="harmone-blog-detail__toc-list">
+            @foreach ($tocItems as $item)
+                <li><a href="#{{ $item['id'] }}">{{ $item['text'] }}</a></li>
+            @endforeach
+        </ol>
+    </nav>
+@endif
+
 @foreach ($post['sections'] ?? [] as $section)
     @switch($section['type'])
         @case('heading')
-            <h2 class="harmone-blog-detail__heading harmone-reveal" data-reveal="fade-up">{{ $section['text'] }}</h2>
+            @php $headingId = \Illuminate\Support\Str::slug($section['text'] ?? ''); @endphp
+            <h2 id="{{ $headingId }}" class="harmone-blog-detail__heading harmone-reveal" data-reveal="fade-up">{{ $section['text'] }}</h2>
             @break
 
         @case('paragraph')
@@ -34,7 +58,9 @@
                     @foreach ($section['items'] as $item)
                         <li>
                             <strong>{{ $item['title'] }}</strong>
-                            <span>{{ $item['body'] }}</span>
+                            @if (($item['body'] ?? '') !== '')
+                                <span>{{ $item['body'] }}</span>
+                            @endif
                         </li>
                     @endforeach
                 </ul>

@@ -19,7 +19,7 @@ if (($_GET['key'] ?? '') !== PATCH_KEY) {
     exit("Forbidden\n");
 }
 
-$newImage = '/assets/site/about-hero-2026.jpg';
+$newImage = '/assets/site/about-hero-user.jpg?v=user2026';
 
 SiteContent::saveFormData('about', ['hero_image' => $newImage]);
 

@@ -32,12 +32,28 @@ BlogSetting::query()->updateOrCreate(
     ],
 );
 
+$newSlugs = collect(config('site.blog_posts', []))->pluck('slug')->all();
+
+$removed = BlogPost::query()
+    ->when($newSlugs !== [], fn ($query) => $query->whereNotIn('slug', $newSlugs))
+    ->when($newSlugs === [], fn ($query) => $query)
+    ->delete();
+
 foreach (config('site.blog_posts', []) as $index => $post) {
     $content = config('blog_content.'.$post['slug'], []);
+    $lookupSlug = $post['slug'];
+
+    if (! empty($post['previous_slug'])) {
+        $existing = BlogPost::query()->where('slug', $post['previous_slug'])->first();
+        if ($existing) {
+            $lookupSlug = $post['previous_slug'];
+        }
+    }
 
     BlogPost::query()->updateOrCreate(
-        ['slug' => $post['slug']],
+        ['slug' => $lookupSlug],
         [
+            'slug' => $post['slug'],
             'title' => $post['title'],
             'author' => $post['author'],
             'published_at' => Carbon::parse($post['date']),
@@ -53,5 +69,6 @@ foreach (config('site.blog_posts', []) as $index => $post) {
     );
 }
 
+echo 'Removed '.$removed.' old blog posts.' . PHP_EOL;
 echo 'Synced '.count(config('site.blog_posts', [])).' blog posts.' . PHP_EOL;
 echo 'Delete sync-blogs.php now.' . PHP_EOL;

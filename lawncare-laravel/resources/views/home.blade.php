@@ -30,7 +30,7 @@
                     <button type="submit" class="harmone-book-btn h-10 w-10 shrink-0 rounded-full p-0"
                         aria-label="Submit">→</button>
                 </form>
-                <a href="{{ route('services.index') }}" class="harmone-services-btn">View services</a>
+                <a href="/#services" class="harmone-services-btn">View services</a>
             </div>
         </div>
     </section>
@@ -158,28 +158,6 @@
         </div>
     </section>
 
-    {{-- Projects --}}
-    <section id="projects" class="section-shell bg-page">
-        <div class="section-inner">
-            @include('partials.harmone-section-header', [
-                'badge' => $home['projects_badge'],
-                'title' => $home['projects_title'],
-            ])
-            <div class="grid gap-6 lg:grid-cols-3">
-                @foreach ($projects as $project)
-                    <div class="harmone-project-card">
-                        <div class="relative aspect-[4/3] overflow-hidden rounded-[20px]">
-                            <img src="{{ $project['image'] }}" alt="{{ $project['title'] }}"
-                                class="h-full w-full object-cover">
-                        </div>
-                        <h3 class="mt-5 text-xl font-medium text-heading">{{ $project['title'] }}</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-body">{{ $project['text'] }}</p>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
     {{-- Client Stories (LeapFly before/after) --}}
     @include('partials.leapfly-client-stories')
 
@@ -239,6 +217,4 @@
             </div>
         </div>
     </section>
-
-    @include('partials.harmone-home-blogs')
 @endsection

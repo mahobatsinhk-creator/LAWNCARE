@@ -9,7 +9,7 @@
     <div class="site-header__grain" aria-hidden></div>
     <div id="header-inner" class="site-header__inner">
         <a href="/" class="header-logo-link shrink-0" aria-label="{{ $site['name'] }}">
-            <img id="header-logo" src="/assets/site/logo-header.png?v=group121" alt="{{ $site['name'] }} logo"
+            <img id="header-logo" src="/assets/site/logo-header.png?v=logo2026" alt="{{ $site['name'] }} logo"
                 class="header-logo site-logo transition-all duration-300">
         </a>
 
@@ -20,7 +20,7 @@
                 @if ($link['href'] === '/')
                     <div id="services-dropdown" class="services-dropdown relative inline-flex items-center">
                         <span class="services-dropdown__trigger inline-flex items-center">
-                            <a href="{{ route('services.index') }}" class="header-nav-link">Services</a>
+                            <span class="header-nav-link">Services</span>
                             <svg class="services-dropdown__chevron" width="16" height="16" viewBox="0 0 14 14" aria-hidden>
                                 <path d="M3 5.5 7 9.5 11 5.5" fill="transparent" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" />

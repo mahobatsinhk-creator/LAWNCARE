@@ -19,6 +19,8 @@ if (($_GET['key'] ?? '') !== PATCH_KEY) {
     exit("Forbidden\n");
 }
 
+$video = '/videos/property-cleanup-2026c.mp4';
+
 $record = SiteContent::query()->where('section', 'home')->first();
 $data = $record->data ?? [];
 $services = $data['home_services'] ?? config('site.home_services');
@@ -28,7 +30,6 @@ if (! is_array($services)) {
     exit("home_services is not an array\n");
 }
 
-$video = '/videos/property-cleanup-loop.mp4';
 $updated = false;
 
 foreach ($services as $index => $service) {
@@ -48,6 +49,20 @@ if (! $updated) {
 }
 
 SiteContent::saveFormData('home', ['home_services' => $services]);
+
+$servicesRecord = SiteContent::query()->where('section', 'services')->first();
+$serviceDetails = $servicesRecord->data['service_details'] ?? config('site.service_details');
+
+if (! is_array($serviceDetails)) {
+    $serviceDetails = [];
+}
+
+$serviceDetails['property-cleanup-and-maintenance'] = array_merge(
+    $serviceDetails['property-cleanup-and-maintenance'] ?? [],
+    ['video' => $video]
+);
+
+SiteContent::saveFormData('services', ['service_details' => $serviceDetails]);
 
 echo "Updated property cleanup service video to {$video}\n";
 echo 'Delete update-property-cleanup-video.php now.' . PHP_EOL;

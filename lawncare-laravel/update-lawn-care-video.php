@@ -28,7 +28,7 @@ if (! is_array($services)) {
     exit("home_services is not an array\n");
 }
 
-$video = '/videos/lawn-care-2026.mp4';
+$video = '/videos/lawn-care-2026c.mp4';
 $updated = false;
 
 foreach ($services as $index => $service) {

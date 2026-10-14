@@ -8,9 +8,9 @@
                 <span>{{ $post['date'] }}</span>
             </p>
             @if (($heading ?? 'h2') === 'h3')
-                <h3 class="harmone-blog-card__title">{{ $post['title'] }}</h3>
+                <h3 class="harmone-blog-card__title">{{ \Illuminate\Support\Str::title($post['title']) }}</h3>
             @else
-                <h2 class="harmone-blog-card__title">{{ $post['title'] }}</h2>
+                <h2 class="harmone-blog-card__title">{{ \Illuminate\Support\Str::title($post['title']) }}</h2>
             @endif
             <span class="harmone-blog-card__arrow" aria-hidden="true">
                 <img src="{{ $blog_arrow_icon }}" alt="" width="25" height="25">
