@@ -217,4 +217,17 @@
             </div>
         </div>
     </section>
+
+    {{-- NiceJob reviews --}}
+    <section id="reviews" class="section-shell bg-page harmone-reviews-section" aria-label="Customer reviews">
+        <div class="section-inner">
+            @include('partials.harmone-section-header', [
+                'badge' => 'Reviews',
+                'title' => 'What Our Customers Say',
+                'subtitle' => 'Real feedback from homeowners across Spruce Grove, Edmonton, and surrounding communities.',
+            ])
+            <div class="nj-stories harmone-reviews-widget"></div>
+        </div>
+    </section>
+    <script type="text/javascript" src="https://cdn.nicejob.co/js/sdk.min.js?id=6272009e-357c-47d0-8b76-81d2a5d59724" defer></script>
 @endsection

@@ -703,8 +703,18 @@ return [
     ],
 
     'social_links' => [
-        ['label' => 'Facebook', 'href' => '#', 'network' => 'facebook'],
-        ['label' => 'Instagram', 'href' => '#', 'network' => 'instagram'],
+        [
+            'label' => 'Facebook',
+            'href' => 'https://www.facebook.com/profile.php?id=61583516643621',
+            'network' => 'facebook',
+            'external' => true,
+        ],
+        [
+            'label' => 'Instagram',
+            'href' => 'https://www.instagram.com/lawnsnowexperts',
+            'network' => 'instagram',
+            'external' => true,
+        ],
         [
             'label' => 'Google Maps',
             'href' => 'https://maps.google.com/?q=PO+Box+3683+Spruce+Grove+AB+T7X+3A9',

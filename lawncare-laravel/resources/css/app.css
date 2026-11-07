@@ -2892,6 +2892,32 @@ body.site-header-menu-open {
     margin: 0 auto;
     min-width: 0;
 }
+/* Homepage NiceJob reviews */
+.harmone-reviews-section.section-shell {
+    padding-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .harmone-reviews-section.section-shell {
+        padding-top: 3.5rem;
+    }
+}
+
+.harmone-reviews-section .harmone-section-header {
+    margin-bottom: 1.75rem;
+}
+
+.harmone-reviews-widget {
+    width: 100%;
+    min-width: 0;
+}
+
+.harmone-reviews-widget .nj-header,
+.harmone-reviews-widget [class*="nj-stories-header"],
+.harmone-reviews-widget > header {
+    display: none !important;
+}
+
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
