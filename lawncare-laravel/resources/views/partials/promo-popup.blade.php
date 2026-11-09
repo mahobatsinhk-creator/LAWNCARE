@@ -6,13 +6,13 @@
             <span aria-hidden="true">&times;</span>
         </button>
 
-        <h2 id="promo-popup-title" class="sr-only">Black Friday Deal — 50% off seasonal snow removal</h2>
+        <h2 id="promo-popup-title" class="sr-only">Black Friday Winter Special — 50% off first month</h2>
 
         <a href="/get-quote" class="promo-popup__banner-link">
             <img
                 class="promo-popup__banner"
-                src="/assets/site/black-friday-sale-banner.jpg"
-                alt="Black Friday Deal: 50% off seasonal snow removal in Edmonton, Spruce Grove and nearby areas"
+                src="/assets/site/black-friday-sale-banner.jpg?v=bf2026b"
+                alt="Black Friday Winter Special: 50% off first month when you sign up for the season in Edmonton and areas"
                 width="1200"
                 height="675"
                 loading="eager"
