@@ -83,7 +83,13 @@
         </div>
 
         <div class="harmone-footer-bottom">
-            <p class="harmone-footer-bottom__copy">&copy; {{ date('Y') }} {{ $site['name'] }}. All rights reserved.</p>
+            <div class="harmone-footer-bottom__row">
+                <p class="harmone-footer-bottom__copy">&copy; {{ date('Y') }} {{ $site['name'] }}. All rights reserved.</p>
+                <nav class="harmone-footer-bottom__legal" aria-label="Legal">
+                    <a href="{{ route('legal.privacy') }}">Privacy Policy</a>
+                    <a href="{{ route('legal.terms') }}">Terms and Conditions</a>
+                </nav>
+            </div>
         </div>
     </div>
 </footer>

@@ -19,6 +19,8 @@ class SitemapController extends Controller
             ['loc' => $base.'/blogs', 'changefreq' => 'weekly', 'priority' => '0.8', 'lastmod' => $now],
             ['loc' => $base.'/contact', 'changefreq' => 'monthly', 'priority' => '0.8', 'lastmod' => $now],
             ['loc' => $base.'/get-quote', 'changefreq' => 'monthly', 'priority' => '0.8', 'lastmod' => $now],
+            ['loc' => $base.'/privacy-policy', 'changefreq' => 'yearly', 'priority' => '0.3', 'lastmod' => $now],
+            ['loc' => $base.'/terms-and-conditions', 'changefreq' => 'yearly', 'priority' => '0.3', 'lastmod' => $now],
         ];
 
         foreach ($site['home_services'] ?? [] as $service) {

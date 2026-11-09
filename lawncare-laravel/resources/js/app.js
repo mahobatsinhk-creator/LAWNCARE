@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initImageCompareSliders();
     initQuoteWizard();
     initServiceAreasMap();
+    initPromoPopup();
 });
 
 function initHeader() {
@@ -571,4 +572,63 @@ async function initServiceAreasMap() {
 
     requestAnimationFrame(() => map.invalidateSize());
     window.addEventListener('resize', () => map.invalidateSize(), { passive: true });
+}
+
+function initPromoPopup() {
+    const popup = document.getElementById('promo-popup');
+    if (!popup) return;
+
+    const storageKey = popup.dataset.promoKey || 'lawncare-promo-popup';
+    try {
+        if (window.localStorage.getItem(storageKey) === 'dismissed') {
+            return;
+        }
+    } catch (error) {
+        // localStorage may be blocked; still show the popup.
+    }
+
+    const dialog = popup.querySelector('.promo-popup__dialog');
+    const closeButtons = popup.querySelectorAll('[data-promo-close]');
+    let previouslyFocused = null;
+
+    function openPopup() {
+        previouslyFocused = document.activeElement;
+        popup.hidden = false;
+        document.body.classList.add('promo-popup-open');
+        requestAnimationFrame(() => popup.classList.add('is-open'));
+        dialog?.querySelector('.promo-popup__close')?.focus();
+    }
+
+    function closePopup(persist) {
+        popup.classList.remove('is-open');
+        document.body.classList.remove('promo-popup-open');
+
+        window.setTimeout(() => {
+            popup.hidden = true;
+        }, 220);
+
+        if (persist) {
+            try {
+                window.localStorage.setItem(storageKey, 'dismissed');
+            } catch (error) {
+                // Ignore storage failures.
+            }
+        }
+
+        if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+            previouslyFocused.focus();
+        }
+    }
+
+    closeButtons.forEach((button) => {
+        button.addEventListener('click', () => closePopup(true));
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && popup.classList.contains('is-open')) {
+            closePopup(true);
+        }
+    });
+
+    window.setTimeout(openPopup, 1200);
 }

@@ -21,7 +21,7 @@
     "src": "node_modules/leaflet/dist/leaflet.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BE41uu0V.css",
+    "file": "assets/app-SqAHEmCW.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -30,7 +30,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-CraSlz2r.js",
+    "file": "assets/app-Bv_bK0Lr.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

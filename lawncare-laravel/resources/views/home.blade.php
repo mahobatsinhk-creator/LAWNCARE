@@ -230,4 +230,6 @@
         </div>
     </section>
     <script type="text/javascript" src="https://cdn.nicejob.co/js/sdk.min.js?id=6272009e-357c-47d0-8b76-81d2a5d59724" defer></script>
+
+    @include('partials.promo-popup')
 @endsection
