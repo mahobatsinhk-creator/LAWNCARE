@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'zapier' => [
+        'webhook_url' => env('ZAPIER_WEBHOOK_URL'),
+    ],
+
 ];
