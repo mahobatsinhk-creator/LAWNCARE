@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Contact — ' . $site['name'])
+@section('title', $contact['seo_title'] ?? ('Contact — '.$site['name']))
+@section('meta_description', $contact['seo_description'] ?? $site['description'])
 
 @section('content')
     <section class="harmone-contact-hero" data-reveal-group>
@@ -17,6 +18,9 @@
                                 <span class="harmone-reveal-word" style="--word-index: {{ $index }}">{{ $word }} </span>
                             @endforeach
                         </h1>
+                        @if (! empty($contact['hero_intro']))
+                            <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body md:text-base harmone-reveal" data-reveal="fade-up">{{ $contact['hero_intro'] }}</p>
+                        @endif
                     </div>
 
                     <div class="harmone-contact-cards">

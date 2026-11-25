@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
+@section('title', $home['seo_title'] ?? ($site['seo_title'] ?? $site['name']))
+@section('meta_description', $home['seo_description'] ?? ($site['seo_description'] ?? $site['description']))
+
 @section('content')
     {{-- Hero --}}
     @php
-        $taglineParts = array_map('trim', explode(',', $site['tagline'], 2));
-        $lineOne = rtrim($taglineParts[0] ?? $site['tagline'], '.');
-        $lineTwo = $taglineParts[1] ?? '';
+        $heroTitle = $home['hero_title'] ?? $site['tagline'];
     @endphp
     <section class="relative min-h-[100svh] overflow-hidden">
         <video autoplay loop muted playsinline preload="auto" poster="{{ $site['hero_image'] }}"
@@ -16,12 +17,9 @@
         <div
             class="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 pb-24 pt-36 text-center md:px-10 md:pb-28 md:pt-40">
             <h1 class="harmone-hero-title">
-                <span class="block">{{ $lineOne }}</span>
-                @if ($lineTwo)
-                    <span class="block">{{ $lineTwo }}</span>
-                @endif
+                <span class="block">{{ $heroTitle }}</span>
             </h1>
-            <p class="mt-5 max-w-[560px] text-[15px] leading-relaxed text-white/92 md:text-base">
+            <p class="mt-5 max-w-[720px] text-[15px] leading-relaxed text-white/92 md:text-base">
                 {{ $home['hero_subtitle'] }}</p>
             <div class="harmone-hero-actions">
                 <form class="harmone-email-form" data-hero-email>
@@ -113,6 +111,7 @@
             @include('partials.harmone-section-header', [
                 'badge' => $home['services_badge'],
                 'title' => $home['services_title'],
+                'subtitle' => $home['services_subtitle'] ?? null,
                 'ctaHref' => '/contact',
                 'ctaLabel' => $home['hero_cta'],
                 'layout' => 'split',
@@ -168,6 +167,7 @@
                 @include('partials.harmone-section-header', [
                     'badge' => $home['areas_badge'],
                     'title' => $home['areas_title'],
+                    'subtitle' => $home['areas_subtitle'] ?? null,
                 ])
                 <ul class="grid gap-3 sm:grid-cols-2">
                     @foreach ($service_areas as $area)

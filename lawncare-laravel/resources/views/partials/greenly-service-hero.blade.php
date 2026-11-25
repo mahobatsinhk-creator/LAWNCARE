@@ -2,7 +2,7 @@
     <div class="greenly-service-detail__inner">
         <header class="greenly-service-detail__hero-copy">
             <h1 class="greenly-service-detail__title">
-                @foreach (preg_split('/\s+/', trim($service['title'])) as $index => $word)
+                @foreach (preg_split('/\s+/', trim($service['page_title'] ?? $service['title'])) as $index => $word)
                     <span class="harmone-reveal-word" style="--word-index: {{ $index }}">{{ $word }} </span>
                 @endforeach
             </h1>

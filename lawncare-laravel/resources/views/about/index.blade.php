@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'About — ' . $site['name'])
+@section('title', $about_page['seo_title'] ?? ('About — '.$site['name']))
+@section('meta_description', $about_page['seo_description'] ?? $site['description'])
 
 @section('content')
     {{-- Hero --}}
@@ -11,6 +12,9 @@
         <div class="harmone-about-page-hero__shade" aria-hidden></div>
         <div class="harmone-about-page-hero__inner">
             <h1 class="harmone-about-page-hero__title" data-word-reveal>{{ $about_page['hero_title'] }}</h1>
+            @if (! empty($about_page['intro']))
+                <p class="mt-6 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg">{{ $about_page['intro'] }}</p>
+            @endif
         </div>
     </section>
 
@@ -40,6 +44,9 @@
                     <span>{{ $about_page['story_badge'] }}</span>
                 </div>
                 <h2 class="harmone-about-page-story__title" data-word-reveal>{{ $about_page['story_title'] }}</h2>
+                @if (! empty($about_page['story_text']))
+                    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body md:text-base">{{ $about_page['story_text'] }}</p>
+                @endif
                 <ol class="harmone-about-page-timeline">
                     @foreach ($about_timeline as $item)
                         <li class="harmone-about-page-timeline__item harmone-about-reveal" data-about-reveal="scale-in"

@@ -102,6 +102,7 @@ class SiteContentFields
     {
         return [
             self::group('hero', 'Hero Section', 'Top banner headline, copy, video, and poster image.', [
+                self::field('hero_title', 'home.hero_title', 'Headline'),
                 self::field('hero_subtitle', 'home.hero_subtitle', 'Subtitle', 'textarea'),
                 self::field('hero_cta', 'home.hero_cta', 'Button label'),
                 self::field('hero_video', 'site.hero_video', 'Background video', 'video'),
@@ -120,6 +121,7 @@ class SiteContentFields
             self::group('services', 'Services Section', 'Services headings and service cards with images/videos.', [
                 self::field('services_badge', 'home.services_badge', 'Badge'),
                 self::field('services_title', 'home.services_title', 'Title'),
+                self::field('services_subtitle', 'home.services_subtitle', 'Introduction', 'textarea'),
                 self::field('home_services', 'home_services', 'Service cards (JSON)', 'json'),
             ]),
             self::group('process', 'Process Section', 'Process video, side image, and steps.', [
@@ -155,6 +157,7 @@ class SiteContentFields
             self::group('areas', 'Service Areas', 'Service area list and side image.', [
                 self::field('areas_badge', 'home.areas_badge', 'Badge'),
                 self::field('areas_title', 'home.areas_title', 'Title'),
+                self::field('areas_subtitle', 'home.areas_subtitle', 'Introduction', 'textarea'),
                 self::field('areas_cta', 'home.areas_cta', 'Button label'),
                 self::field('promise_image', 'site.promise_image', 'Side image', 'image'),
                 self::field('service_areas', 'service_areas', 'Service areas list (JSON)', 'json'),
@@ -187,6 +190,7 @@ class SiteContentFields
         return [
             self::group('hero', 'Hero Section', 'About page banner.', [
                 self::field('hero_title', 'about_page.hero_title', 'Title'),
+                self::field('intro', 'about_page.intro', 'Introduction', 'textarea'),
                 self::field('hero_image', 'about_page.hero_image', 'Hero image', 'image'),
             ]),
             self::group('founder', 'Founder Section', 'Founder quote and photo.', [
@@ -207,6 +211,7 @@ class SiteContentFields
             self::group('story', 'Story Section', 'Company story and image.', [
                 self::field('story_badge', 'about_page.story_badge', 'Badge'),
                 self::field('story_title', 'about_page.story_title', 'Title', 'textarea'),
+                self::field('story_text', 'about_page.story_text', 'Introduction', 'textarea'),
                 self::field('story_image', 'about_page.story_image', 'Story image', 'image'),
                 self::field('story_cta', 'about_page.story_cta', 'Button label'),
                 self::field('about_timeline', 'about_timeline', 'Timeline (JSON)', 'json'),
@@ -262,6 +267,7 @@ class SiteContentFields
             self::group('hero', 'Hero Section', 'Contact page banner.', [
                 self::field('hero_badge', 'contact.hero_badge', 'Badge'),
                 self::field('hero_title', 'contact.hero_title', 'Title'),
+                self::field('hero_intro', 'contact.hero_intro', 'Introduction', 'textarea'),
                 self::field('hero_image', 'contact.hero_image', 'Hero image', 'image'),
             ]),
             self::group('form', 'Contact Form', 'Form image and copy.', [
@@ -317,6 +323,7 @@ class SiteContentFields
                 self::field('brand_short', 'footer.brand_short', 'Brand short name'),
                 self::field('cta_badge', 'footer.cta_badge', 'Badge'),
                 self::field('cta_title', 'footer.cta_title', 'Title'),
+                self::field('cta_text', 'footer.cta_text', 'Supporting text', 'textarea'),
                 self::field('cta_button', 'footer.cta_button', 'Button label'),
                 self::field('cta_href', 'footer.cta_href', 'Button URL'),
             ]),

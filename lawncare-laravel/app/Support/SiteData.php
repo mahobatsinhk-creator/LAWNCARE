@@ -21,7 +21,10 @@ class SiteData
         }
 
         if (BlogSetting::query()->exists()) {
-            $site['blogs_page'] = BlogSetting::current()->toPublicArray();
+            $site['blogs_page'] = array_merge(
+                $site['blogs_page'] ?? [],
+                BlogSetting::current()->toPublicArray(),
+            );
         }
 
         foreach (SiteContent::query()->get() as $record) {

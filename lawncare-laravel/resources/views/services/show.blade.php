@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $service['title'] . ' — ' . $site['name'])
+@section('title', $service['seo_title'] ?? (($service['page_title'] ?? $service['title']).' — '.$site['name']))
+@section('meta_description', $service['seo_description'] ?? $site['description'])
 @section('canonical', url('/services/'.$service['slug']))
 @section('og_image', url($service['hero_image'] ?? $service['image'] ?? ($site['logo'] ?? '/assets/site/logo-header.png')))
 
