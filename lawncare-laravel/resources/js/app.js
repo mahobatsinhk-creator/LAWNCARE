@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initServiceCards();
     initImageCompareSliders();
     initQuoteWizard();
-    initServiceAreasMap();
-    initPromoPopup();
 });
 
 function initHeader() {
@@ -44,42 +42,18 @@ function initHeader() {
 function initMobileMenu() {
     const menuBtn = document.getElementById('header-menu-btn');
     const mobileNav = document.getElementById('header-mobile-nav');
-    const backdrop = document.getElementById('header-mobile-backdrop');
-    const servicesToggle = document.getElementById('mobile-services-toggle');
-    const servicesSubmenu = document.getElementById('mobile-services-submenu');
     if (!menuBtn || !mobileNav) return null;
-
-    const setServicesOpen = (open) => {
-        if (!servicesToggle || !servicesSubmenu) return;
-
-        servicesToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        servicesSubmenu.hidden = !open;
-    };
 
     const setOpen = (open) => {
         menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
         menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         mobileNav.classList.toggle('is-open', open);
         mobileNav.hidden = !open;
-        if (backdrop) {
-            backdrop.hidden = !open;
-            backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
-        }
         document.body.classList.toggle('site-header-menu-open', open);
-
-        if (!open) {
-            setServicesOpen(false);
-        }
     };
 
     menuBtn.addEventListener('click', () => {
         setOpen(menuBtn.getAttribute('aria-expanded') !== 'true');
-    });
-
-    backdrop?.addEventListener('click', () => setOpen(false));
-
-    servicesToggle?.addEventListener('click', () => {
-        setServicesOpen(servicesToggle.getAttribute('aria-expanded') !== 'true');
     });
 
     mobileNav.querySelectorAll('a').forEach((link) => {
@@ -186,27 +160,139 @@ function initForms() {
 }
 
 function initScrollReveal() {
-    document.querySelectorAll('.harmone-reveal, .harmone-reveal-word').forEach((el) => {
-        el.classList.add('is-visible');
+    const revealItems = document.querySelectorAll('.harmone-reveal, .harmone-reveal-word');
+    if (!revealItems.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        revealItems.forEach((el) => el.classList.add('is-visible'));
+        return;
+    }
+
+    if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: view()')) {
+        document.documentElement.classList.add('harmone-scroll-reveal');
+        revealItems.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+                el.classList.add('is-visible');
+            }
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                const group = entry.target;
+                const items = group.matches('[data-reveal-group]')
+                    ? [
+                          ...group.querySelectorAll('.harmone-reveal'),
+                          ...group.querySelectorAll('.harmone-reveal-word'),
+                      ]
+                    : [group];
+
+                items.forEach((item, index) => {
+                    const extraDelay = Number(item.dataset.revealDelay || 0);
+                    const delay = extraDelay + index * 90;
+
+                    window.setTimeout(() => {
+                        item.classList.add('is-visible');
+                    }, delay);
+                });
+
+                observer.unobserve(group);
+            });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
+    );
+
+    document.querySelectorAll('[data-reveal-group]').forEach((group) => {
+        observer.observe(group);
     });
 }
 
 function initContactCardReveal() {
-    document.querySelectorAll('[data-contact-reveal]').forEach((card) => {
-        card.classList.add('is-visible');
-    });
+    const cards = document.querySelectorAll('[data-contact-reveal]');
+    if (!cards.length) return;
+
+    const show = (card) => card.classList.add('is-visible');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        cards.forEach(show);
+        return;
+    }
+
+    if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: view()')) {
+        document.documentElement.classList.add('harmone-contact-scroll');
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                const card = entry.target;
+                const delay = Number(card.style.getPropertyValue('--contact-reveal-index') || 0) * 120;
+
+                window.setTimeout(() => show(card), delay);
+                observer.unobserve(card);
+            });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -5% 0px' },
+    );
+
+    cards.forEach((card) => observer.observe(card));
 }
 
 function initBlogScaleIn() {
-    document.querySelectorAll('[data-blog-scale-in]').forEach((card) => {
-        card.classList.add('is-visible');
-    });
+    const cards = document.querySelectorAll('[data-blog-scale-in]');
+    if (!cards.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        cards.forEach((card) => card.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        },
+        { threshold: 0.2, rootMargin: '0px 0px -8% 0px' },
+    );
+
+    cards.forEach((card) => observer.observe(card));
 }
 
 function initServiceCards() {
-    document.querySelectorAll('.leapfly-service-card[data-animate], .leapfly-service-row[data-animate]').forEach((card) => {
-        card.classList.add('is-visible');
-    });
+    const cards = document.querySelectorAll('.leapfly-service-card[data-animate], .leapfly-service-row[data-animate]');
+    if (!cards.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        cards.forEach((card) => card.classList.add('is-visible'));
+        return;
+    }
+
+    if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: view()')) {
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+    );
+
+    cards.forEach((card) => observer.observe(card));
 }
 
 function initAboutPageScroll() {
@@ -227,15 +313,64 @@ function initAboutWordReveal(reducedMotion) {
         const words = text.split(/\s+/);
 
         block.innerHTML = words
-            .map((word) => `<span class="harmone-about-word is-visible">${word}</span>`)
+            .map((word) => `<span class="harmone-about-word">${word}</span>`)
             .join(' ');
+
+        if (reducedMotion) {
+            block.querySelectorAll('.harmone-about-word').forEach((word) => word.classList.add('is-visible'));
+            return;
+        }
+
+        const spans = block.querySelectorAll('.harmone-about-word');
+        const reveal = () => {
+            spans.forEach((span, index) => {
+                window.setTimeout(() => span.classList.add('is-visible'), index * 60);
+            });
+        };
+
+        if (block.closest('[data-about-hero]')) {
+            window.requestAnimationFrame(reveal);
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (!entries.some((entry) => entry.isIntersecting)) return;
+                reveal();
+                observer.disconnect();
+            },
+            { threshold: 0.2, rootMargin: '0px 0px -8% 0px' },
+        );
+
+        observer.observe(block);
     });
 }
 
 function initAboutScrollReveals(reducedMotion) {
-    document.querySelectorAll('[data-about-reveal]').forEach((item) => {
-        item.classList.add('is-visible');
-    });
+    const items = document.querySelectorAll('[data-about-reveal]');
+    if (!items.length) return;
+
+    if (reducedMotion) {
+        items.forEach((item) => item.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                const item = entry.target;
+                const delay = Number(item.dataset.revealDelay || 0);
+
+                window.setTimeout(() => item.classList.add('is-visible'), delay);
+                observer.unobserve(item);
+            });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -10% 0px' },
+    );
+
+    items.forEach((item) => observer.observe(item));
 }
 
 function initAboutHeroParallax(reducedMotion) {
@@ -246,7 +381,7 @@ function initAboutHeroParallax(reducedMotion) {
     const update = () => {
         const rect = hero.getBoundingClientRect();
         const progress = Math.min(1, Math.max(0, -rect.top / Math.max(rect.height, 1)));
-        parallax.style.transform = `translate3d(0, ${progress * rect.height * 0.35}px, 0)`;
+        parallax.style.transform = `translate3d(0, ${progress * rect.height * 0.35}px, 0) scale(1.08)`;
     };
 
     update();
@@ -502,133 +637,4 @@ function initQuoteWizard() {
             submitButton?.removeAttribute('disabled');
         }
     });
-}
-
-async function initServiceAreasMap() {
-    const mapEl = document.getElementById('service-areas-map');
-    if (!mapEl) return;
-
-    let areas = [];
-
-    try {
-        areas = JSON.parse(mapEl.dataset.areas || '[]');
-    } catch {
-        return;
-    }
-
-    if (!Array.isArray(areas) || areas.length === 0) return;
-
-    const [{ default: L }] = await Promise.all([
-        import('leaflet'),
-        import('leaflet/dist/leaflet.css'),
-    ]);
-
-    const map = L.map(mapEl, {
-        scrollWheelZoom: false,
-        zoomControl: true,
-    });
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 18,
-    }).addTo(map);
-
-    const bounds = L.latLngBounds([]);
-    const markers = [];
-
-    areas.forEach((area, index) => {
-        if (!area?.name || area.lat == null || area.lng == null) return;
-
-        const marker = L.marker([area.lat, area.lng], {
-            icon: L.divIcon({
-                className: 'harmone-areas-map-marker-wrap',
-                html: `<span class="harmone-areas-map-marker" aria-hidden="true">${index + 1}</span>`,
-                iconSize: [28, 28],
-                iconAnchor: [14, 14],
-                popupAnchor: [0, -16],
-            }),
-        }).addTo(map);
-
-        marker.bindPopup(area.name, { className: 'harmone-areas-map-popup' });
-        bounds.extend([area.lat, area.lng]);
-        markers.push({ marker, name: area.name });
-    });
-
-    if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [32, 32], maxZoom: 11 });
-    }
-
-    document.querySelectorAll('#areas .harmone-area-pill').forEach((pill, index) => {
-        pill.style.cursor = 'pointer';
-
-        pill.addEventListener('click', () => {
-            const target = markers[index];
-            if (!target) return;
-
-            map.setView(target.marker.getLatLng(), 12, { animate: true });
-            target.marker.openPopup();
-        });
-    });
-
-    requestAnimationFrame(() => map.invalidateSize());
-    window.addEventListener('resize', () => map.invalidateSize(), { passive: true });
-}
-
-function initPromoPopup() {
-    const popup = document.getElementById('promo-popup');
-    if (!popup) return;
-
-    const storageKey = popup.dataset.promoKey || 'lawncare-promo-popup';
-    try {
-        if (window.localStorage.getItem(storageKey) === 'dismissed') {
-            return;
-        }
-    } catch (error) {
-        // localStorage may be blocked; still show the popup.
-    }
-
-    const dialog = popup.querySelector('.promo-popup__dialog');
-    const closeButtons = popup.querySelectorAll('[data-promo-close]');
-    let previouslyFocused = null;
-
-    function openPopup() {
-        previouslyFocused = document.activeElement;
-        popup.hidden = false;
-        document.body.classList.add('promo-popup-open');
-        requestAnimationFrame(() => popup.classList.add('is-open'));
-        dialog?.querySelector('.promo-popup__close')?.focus();
-    }
-
-    function closePopup(persist) {
-        popup.classList.remove('is-open');
-        document.body.classList.remove('promo-popup-open');
-
-        window.setTimeout(() => {
-            popup.hidden = true;
-        }, 220);
-
-        if (persist) {
-            try {
-                window.localStorage.setItem(storageKey, 'dismissed');
-            } catch (error) {
-                // Ignore storage failures.
-            }
-        }
-
-        if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
-            previouslyFocused.focus();
-        }
-    }
-
-    closeButtons.forEach((button) => {
-        button.addEventListener('click', () => closePopup(true));
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && popup.classList.contains('is-open')) {
-            closePopup(true);
-        }
-    });
-
-    window.setTimeout(openPopup, 1200);
 }
