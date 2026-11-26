@@ -4,41 +4,97 @@
 @section('meta_description', $home['seo_description'] ?? ($site['seo_description'] ?? $site['description']))
 
 @push('head')
-    {{-- Local Business Schema --}}
-    <script type="application/ld+json">
-        {!! json_encode([
-            '@context' => 'https://schema.org',
-            '@type' => 'HomeAndConstructionBusiness',
-            'name' => 'Lawn Care and Snow Removal Experts',
-            'telephone' => '+1-587-879-5296',
-            'email' => 'lawncareandsnowremovalexperts@gmail.com',
-            'address' => [
-                '@type' => 'PostalAddress',
-                'streetAddress' => 'PO Box 3683',
-                'addressLocality' => 'Spruce Grove',
-                'addressRegion' => 'AB',
-                'postalCode' => 'T7X 3A9',
-                'addressCountry' => 'CA',
-            ],
-        ], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
-    </script>
-    {{-- FAQ Schema --}}
-    <script type="application/ld+json">
-        {!! json_encode([
-            '@context' => 'https://schema.org',
-            '@type' => 'FAQPage',
-            'mainEntity' => [
-                [
-                    '@type' => 'Question',
-                    'name' => 'What services do you offer?',
-                    'acceptedAnswer' => [
-                        '@type' => 'Answer',
-                        'text' => 'We offer residential and commercial lawn care during warmer months, and residential snow removal, property clean-up, and hauling services.',
-                    ],
-                ],
-            ],
-        ], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
-    </script>
+@verbatim
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Lawn Care and Snow Removal Experts",
+  "url": "https://lawncareandsnowremovalexperts.com",
+  "telephone": "+1-587-879-5296",
+  "email": "lawncareandsnowremovalexperts@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "PO Box 3683",
+    "addressLocality": "Spruce Grove",
+    "addressRegion": "AB",
+    "postalCode": "T7X 3A9",
+    "addressCountry": "CA"
+  },
+  "areaServed": [
+    "Spruce Grove",
+    "Edmonton",
+    "St. Albert",
+    "Stony Plain",
+    "Leduc",
+    "Acheson",
+    "Beaumont",
+    "Sherwood Park"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61583516643621",
+    "https://www.instagram.com/lawnsnowexperts",
+    "https://maps.google.com/?q=PO+Box+3683+Spruce+Grove+AB+T7X+3A9"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you offer snow removal for both residential and commercial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide lawn care and summer property maintenance for residential and commercial properties. Snow removal is available for residential properties only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What lawn care services do you provide during the warmer months?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "During the warmer months, our services include lawn mowing and trimming, edging, fertilizer application, aeration, power raking, overseeding, lawn patch restoration, and seasonal yard clean-up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I schedule seasonal snow removal contracts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contact our team to discuss your residential snow removal requirements and service availability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What services do you offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our services include lawn care and maintenance, residential snow removal, spring and fall clean-up, and property clean-up and hauling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you available year-round?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our services vary by season. Lawn care and seasonal property maintenance are offered during warmer months, while residential snow removal is available during winter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer property clean-up and hauling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Property Clean-Up and Hauling is available. Services include yard clean-up, property debris removal, estate and bulk item removal, property clear-outs, and site clean-up and disposal. Contact us to discuss the specific work required."
+      }
+    }
+  ]
+}
+</script>
+@endverbatim
 @endpush
 
 @section('content')
@@ -46,14 +102,13 @@
     @php
         $heroTitle = $home['hero_title'] ?? $site['tagline'];
     @endphp
-    <section class="relative min-h-[100svh] overflow-hidden">
+    <section class="harmone-home-hero">
         <video autoplay loop muted playsinline preload="auto" poster="{{ $site['hero_image'] }}"
             class="absolute inset-0 h-full w-full object-cover object-center" aria-hidden>
             <source src="{{ $site['hero_video'] }}" type="video/mp4">
         </video>
         <div class="harmone-hero-shade absolute inset-0" aria-hidden></div>
-        <div
-            class="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 pb-24 pt-36 text-center md:px-10 md:pb-28 md:pt-40">
+        <div class="harmone-home-hero__content">
             <h1 class="harmone-hero-title">
                 <span class="block">{{ $heroTitle }}</span>
             </h1>
