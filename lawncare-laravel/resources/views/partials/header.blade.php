@@ -9,7 +9,7 @@
     <div class="site-header__grain" aria-hidden></div>
     <div id="header-inner" class="site-header__inner">
         <a href="/" class="header-logo-link shrink-0" aria-label="{{ $site['name'] }}">
-            <img id="header-logo" src="/assets/site/logo-header.png?v=logo2026" alt="{{ $site['name'] }} logo"
+            <img id="header-logo" src="/assets/site/logo-header.png?v=logo2026b" alt="{{ $site['name'] }} logo"
                 class="header-logo site-logo transition-all duration-300">
         </a>
 

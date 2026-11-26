@@ -3,6 +3,44 @@
 @section('title', $home['seo_title'] ?? ($site['seo_title'] ?? $site['name']))
 @section('meta_description', $home['seo_description'] ?? ($site['seo_description'] ?? $site['description']))
 
+@push('head')
+    {{-- Local Business Schema --}}
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'HomeAndConstructionBusiness',
+            'name' => 'Lawn Care and Snow Removal Experts',
+            'telephone' => '+1-587-879-5296',
+            'email' => 'lawncareandsnowremovalexperts@gmail.com',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'PO Box 3683',
+                'addressLocality' => 'Spruce Grove',
+                'addressRegion' => 'AB',
+                'postalCode' => 'T7X 3A9',
+                'addressCountry' => 'CA',
+            ],
+        ], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
+    </script>
+    {{-- FAQ Schema --}}
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => [
+                [
+                    '@type' => 'Question',
+                    'name' => 'What services do you offer?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'We offer residential and commercial lawn care during warmer months, and residential snow removal, property clean-up, and hauling services.',
+                    ],
+                ],
+            ],
+        ], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
+    </script>
+@endpush
+
 @section('content')
     {{-- Hero --}}
     @php

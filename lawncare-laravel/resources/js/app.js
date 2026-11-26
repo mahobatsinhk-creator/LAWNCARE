@@ -176,6 +176,23 @@ function initScrollReveal() {
                 el.classList.add('is-visible');
             }
         });
+
+        const settle = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    settle.unobserve(entry.target);
+                });
+            },
+            { threshold: 0.08, rootMargin: '0px 0px -4% 0px' },
+        );
+
+        revealItems.forEach((el) => {
+            if (!el.classList.contains('is-visible')) {
+                settle.observe(el);
+            }
+        });
         return;
     }
 

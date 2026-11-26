@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 $cdn = 'https://d13cw1lxlociqy.cloudfront.net';
 $harmone = '/assets/harmone/images';
@@ -24,7 +24,7 @@ return [
             'postal_code' => 'T7X 3A9',
             'country' => 'Canada',
         ],
-        'seo_title' => 'Lawn Care & Snow Removal in Spruce Grove, AB',
+        'seo_title' => 'Lawn Care and Snow Removal in Spruce Grove, AB',
         'seo_description' => 'Explore residential and commercial lawn care, seasonal clean-up, property hauling, and residential snow removal in Spruce Grove, Alberta.',
         'logo' => '/assets/site/logo-header.png',
         'hero_video' => 'https://framerusercontent.com/assets/BbBrpYmkGRxDlha1JE84gb3ri0.mp4',
@@ -93,7 +93,7 @@ return [
         'process_title' => 'Simple Steps From Quote to Year-Round Care',
         'blogs_badge' => 'Our Blogs',
         'blogs_cta' => 'View All Blogs',
-        'seo_title' => 'Lawn Care & Snow Removal in Spruce Grove, AB',
+        'seo_title' => 'Lawn Care and Snow Removal in Spruce Grove, AB',
         'seo_description' => 'Explore residential and commercial lawn care, seasonal clean-up, property hauling, and residential snow removal in Spruce Grove, Alberta.',
     ],
 
@@ -118,7 +118,7 @@ return [
             'hero_image' => '/assets/services/snow-removal/snow-removal-card.jpg?v=snow2026d',
             'video' => null,
             'offerings_lead' => 'Explore our residential winter maintenance services for driveways, walkways, and other outdoor access areas.',
-            'seo_title' => 'Residential Snow Removal | Spruce Grove, Edmonton & Stony Plain',
+            'seo_title' => 'Residential Snow Removal | Spruce Grove, Edmonton and Stony Plain',
             'seo_description' => 'Keep residential driveways and walkways clearer with snow removal services in Spruce Grove, Edmonton, and Stony Plain.',
             'detail_offerings' => [
                 [
@@ -127,7 +127,7 @@ return [
                     'image' => '/assets/services/snow-removal/driveway-clearing.jpg?v=snow2026d',
                 ],
                 [
-                    'title' => 'Walkway & Sidewalk Clearing',
+                    'title' => 'Walkway and Sidewalk Clearing',
                     'body' => 'Removal of accumulated snow from residential walkways, sidewalks, and front steps.',
                     'image' => '/assets/services/snow-removal/walkway-sidewalk-clearing.jpg?v=snow2026f',
                 ],
@@ -150,46 +150,46 @@ return [
         ],
         'lawn-care-and-maintenance' => [
             'intro_heading' => 'Maintain a healthy, neat, and well-kept outdoor space with lawn care and maintenance from Lawn Care and Snow Removal Experts. Our services include lawn mowing and trimming, edging, fertilizer application, aeration, power raking, overseeding, and lawn patch restoration. Lawn care and summer property maintenance are available for residential and commercial properties.',
-            'hero_image' => '/assets/services/lawn-care/lawn-care-card.jpg?v=lawn2026e',
+            'hero_image' => '/assets/services/lawn-care/lawn-care-card.jpg?v=lawn2026g',
             'video' => null,
             'offerings_lead' => 'Our lawn care services cover key maintenance needs to help keep your lawn tidy and cared for throughout the growing season.',
-            'seo_title' => 'Lawn Care & Maintenance in Spruce Grove, AB',
+            'seo_title' => 'Lawn Care and Maintenance in Spruce Grove, AB',
             'seo_description' => 'Explore lawn mowing, edging, fertilizer application, aeration, power raking, overseeding, and lawn patch restoration for residential and commercial properties.',
             'detail_offerings' => [
                 [
                     'title' => 'Lawn Mowing and Trimming',
                     'body' => 'Regular mowing and trimming help maintain a neat lawn by managing grass growth and keeping lawn edges and surrounding areas tidy.',
-                    'image' => '/assets/services/lawn-care/lawn-mowing-trimming.jpg?v=lawn2026e',
+                    'image' => '/assets/services/lawn-care/lawn-mowing-trimming.jpg?v=lawn2026g',
                 ],
                 [
                     'title' => 'Lawn Edging',
                     'body' => 'Edging along sidewalks, driveways, and landscape borders creates cleaner, more defined lines around lawn areas.',
-                    'image' => '/assets/services/lawn-care/lawn-edging.jpg?v=lawn2026e',
+                    'image' => '/assets/services/lawn-care/lawn-edging.jpg?v=lawn2026g',
                 ],
                 [
                     'title' => 'Fertilizer Application',
                     'body' => 'Fertilizer application supports lawn nutrition as part of a seasonal lawn-care routine.',
-                    'image' => '/assets/services/lawn-care/fertilizer-application.jpg?v=lawn2026e',
+                    'image' => '/assets/services/lawn-care/fertilizer-application.jpg?v=lawn2026g',
                 ],
                 [
                     'title' => 'Aeration',
                     'body' => 'Aeration helps relieve soil compaction and supports the movement of air, water, and nutrients through the soil.',
-                    'image' => '/assets/services/lawn-care/aeration.jpg?v=lawn2026f',
+                    'image' => '/assets/services/lawn-care/aeration.jpg?v=lawn2026g',
                 ],
                 [
                     'title' => 'Power Raking',
                     'body' => 'Power raking helps remove built-up thatch and dead grass material from the lawn surface.',
-                    'image' => '/assets/services/lawn-care/power-raking.jpg?v=lawn2026f',
+                    'image' => '/assets/services/lawn-care/power-raking.jpg?v=lawn2026g',
                 ],
                 [
                     'title' => 'Overseeding',
                     'body' => 'Overseeding adds grass seed to existing lawn areas to help improve lawn coverage and address thin patches.',
-                    'image' => '/assets/services/lawn-care/overseeding.jpg?v=lawn2026f',
+                    'image' => '/assets/services/lawn-care/overseeding.jpg?v=lawn2026g',
                 ],
                 [
                     'title' => 'Lawn Patch Restoration',
                     'body' => 'Lawn patch restoration focuses on repairing damaged or bare areas to improve the overall appearance of the lawn.',
-                    'image' => '/assets/services/lawn-care/lawn-patch-restoration.jpg?v=lawn2026f',
+                    'image' => '/assets/services/lawn-care/lawn-patch-restoration.jpg?v=lawn2026g',
                 ],
             ],
             'detail_features' => [],
@@ -199,7 +199,7 @@ return [
             'hero_image' => '/assets/services/property-cleanup/property-cleanup-card.jpg?v=cleanup2026g',
             'video' => null,
             'offerings_lead' => 'From seasonal yard debris to larger property clear-outs, explore the clean-up and hauling services available.',
-            'seo_title' => 'Property Clean-Up & Hauling in Spruce Grove, AB',
+            'seo_title' => 'Property Clean-Up and Hauling in Spruce Grove, AB',
             'seo_description' => 'Get help with yard clean-up, property debris removal, estate and bulk item removal, property clear-outs, and site clean-up.',
             'detail_offerings' => [
                 [
@@ -235,7 +235,7 @@ return [
             'hero_image' => '/assets/services/spring-fall-clean-up/spring-fall-cleanup-card.jpg?v=seasonal2026f',
             'video' => null,
             'offerings_lead' => 'Explore seasonal clean-up services that help clear outdoor debris and prepare your yard for the season ahead.',
-            'seo_title' => 'Spring & Fall Clean-Up in Spruce Grove, AB',
+            'seo_title' => 'Spring and Fall Clean-Up in Spruce Grove, AB',
             'seo_description' => 'Prepare your yard for changing seasons with leaf removal, yard debris removal, bed and hedge blowouts, light pruning, and seasonal clean-up.',
             'detail_offerings' => [
                 [
@@ -289,7 +289,7 @@ return [
             'card_short' => 'Maintain a neat outdoor space with lawn mowing and trimming, edging, fertilizer application, aeration, power raking, overseeding, and lawn patch restoration. Available for residential and commercial properties.',
             'features' => ['Mowing, edging, and trimming', 'Fertilizer, aeration, and overseeding', 'Residential and commercial'],
             'href' => '/services/lawn-care-and-maintenance',
-            'image' => '/assets/services/lawn-care/lawn-care-card.jpg?v=lawn2026e',
+            'image' => '/assets/services/lawn-care/lawn-care-card.jpg?v=lawn2026g',
             'coming_soon' => false,
             'reverse' => false,
             'icon' => 'lawn',
@@ -330,7 +330,7 @@ return [
         [
             'slug' => 'property-cleanup-and-maintenance',
             'title' => 'Property Clean-Up & Hauling',
-            'page_title' => 'Property Clean-Up & Hauling in Spruce Grove, Alberta',
+            'page_title' => 'Property Clean-Up and Hauling in Spruce Grove, Alberta',
             'short' => 'Property clean-up and hauling services to help keep outdoor areas clear, tidy, and ready to use.',
             'card_short' => 'Restore order to outdoor areas with yard clean-up, property debris removal, estate and bulk item removal, property clear-outs, and site clean-up and disposal.',
             'features' => ['Yard clean-up', 'Property debris removal', 'Estate and bulk item removal'],
@@ -395,7 +395,7 @@ return [
 
     'projects' => [
         ['title' => 'Winter Snow Removal', 'text' => 'Driveways, walkways, and entrances cleared promptly so your property stays safe all season.', 'image' => '/assets/services/snow-removal/driveway-clearing.jpg?v=snow2026d'],
-        ['title' => 'Seasonal Lawn Care', 'text' => 'Mowing, edging, and maintenance that keep your lawn healthy and looking its best.', 'image' => '/assets/services/lawn-care/lawn-mowing-trimming.jpg?v=lawn2026e'],
+        ['title' => 'Seasonal Lawn Care', 'text' => 'Mowing, edging, and maintenance that keep your lawn healthy and looking its best.', 'image' => '/assets/services/lawn-care/lawn-mowing-trimming.jpg?v=lawn2026g'],
         ['title' => 'Property Cleanup', 'text' => 'Fall cleanups and year-round maintenance to protect your landscape investment.', 'image' => '/assets/services/property-cleanup/yard-clean-up.png?v=projects2026'],
     ],
 
@@ -511,7 +511,7 @@ return [
         'cta_badge' => 'Get Started',
         'cta_title' => 'Let’s Keep Your Property Looking Its Best',
         'cta_button' => 'Contact Us Today',
-        'cta_bg_primary' => "{$harmone}/eV8qujmBooDc26rEtIpX1m2G5M7278.png",
+        'cta_bg_primary' => "{$harmone}/eV8qujmBooDc26rEtIpX1m2G5M7278.jpg",
         'cta_bg_secondary' => "{$harmone}/cEzebRWPX0YtfvMYFXdKbKptCIs7278.png",
         'seo_title' => 'About Us | Lawn Care and Snow Removal Experts',
         'seo_description' => 'Learn about Lawn Care and Snow Removal Experts, a property maintenance company based in Spruce Grove, Alberta.',
@@ -698,7 +698,7 @@ return [
         'more_pages_label' => 'More Pages',
         'services_label' => 'Services',
         'contact_label' => 'Contact',
-        'cta_bg_primary' => "{$harmone}/eV8qujmBooDc26rEtIpX1m2G5M7278.png",
+        'cta_bg_primary' => "{$harmone}/eV8qujmBooDc26rEtIpX1m2G5M7278.jpg",
         'cta_bg_secondary' => "{$harmone}/cEzebRWPX0YtfvMYFXdKbKptCIs7278.png",
     ],
 

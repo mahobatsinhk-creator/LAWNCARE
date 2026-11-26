@@ -13,13 +13,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @php
-        $pageTitle = trim($__env->yieldContent('title', $site['name'] ?? 'Lawn Care and Snow Removal Experts'));
-        $pageDescription = trim($__env->yieldContent('meta_description', $site['description'] ?? ''));
-        $canonicalUrl = trim($__env->yieldContent('canonical', url()->current()));
-        $ogImageRaw = trim($__env->yieldContent('og_image', $site['logo'] ?? '/assets/site/logo-header.png'));
+        // @section('title', $value) HTML-escapes once; decode before {{ }} so &amp; is not double-encoded.
+        $decodeMeta = static function (string $value): string {
+            $value = html_entity_decode(trim($value), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            // Prefer plain "and" in titles/previews — never show literal &amp;
+            return preg_replace('/\s*&\s*/', ' and ', $value) ?? $value;
+        };
+        $pageTitle = $decodeMeta($__env->yieldContent('title', $site['name'] ?? 'Lawn Care and Snow Removal Experts'));
+        $pageDescription = $decodeMeta($__env->yieldContent('meta_description', $site['description'] ?? ''));
+        $canonicalUrl = trim(html_entity_decode($__env->yieldContent('canonical', url()->current()), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+        $ogImageRaw = trim(html_entity_decode($__env->yieldContent('og_image', $site['logo'] ?? '/assets/site/logo-header.png'), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
         $ogImage = str_starts_with($ogImageRaw, 'http') ? $ogImageRaw : url($ogImageRaw);
-        $ogType = trim($__env->yieldContent('og_type', 'website'));
+        $ogType = trim(html_entity_decode($__env->yieldContent('og_type', 'website'), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
         $siteUrl = rtrim($site['url'] ?? config('app.url'), '/');
+        $siteName = $decodeMeta($site['name'] ?? 'Lawn Care and Snow Removal Experts');
     @endphp
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
@@ -28,7 +35,7 @@
 
     <meta property="og:locale" content="en_CA">
     <meta property="og:type" content="{{ $ogType }}">
-    <meta property="og:site_name" content="{{ $site['name'] ?? 'Lawn Care and Snow Removal Experts' }}">
+    <meta property="og:site_name" content="{{ $siteName }}">
     <meta property="og:title" content="{{ $pageTitle }}">
     <meta property="og:description" content="{{ $pageDescription }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">

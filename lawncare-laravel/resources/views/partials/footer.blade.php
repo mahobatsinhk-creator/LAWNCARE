@@ -22,7 +22,7 @@
         </div>
         <h2 class="harmone-footer-cta__title">{{ $footer['cta_title'] }}</h2>
         @if (! empty($footer['cta_text']))
-            <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/85 md:text-base">{{ $footer['cta_text'] }}</p>
+            <p class="harmone-footer-cta__text">{{ $footer['cta_text'] }}</p>
         @endif
         <a href="{{ $footer['cta_href'] }}" class="harmone-footer-cta__btn">{{ $footer['cta_button'] }}</a>
     </div>

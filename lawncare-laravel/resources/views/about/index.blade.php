@@ -13,7 +13,7 @@
         <div class="harmone-about-page-hero__inner">
             <h1 class="harmone-about-page-hero__title" data-word-reveal>{{ $about_page['hero_title'] }}</h1>
             @if (! empty($about_page['intro']))
-                <p class="mt-6 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg">{{ $about_page['intro'] }}</p>
+                <p class="harmone-about-page-hero__intro">{{ $about_page['intro'] }}</p>
             @endif
         </div>
     </section>
