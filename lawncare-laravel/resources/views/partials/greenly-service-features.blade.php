@@ -9,7 +9,7 @@
                 ]) data-reveal="fade-up" data-reveal-delay="{{ $index * 80 }}">
                     @if (! empty($feature['image']))
                         <div class="greenly-service-detail__feature-media">
-                            <img src="{{ $feature['image'] }}" alt="{{ \Illuminate\Support\Str::title($feature['title']) }}" loading="lazy">
+                            <img src="{{ $feature['image'] }}" alt="{{ site_image_alt($feature['image'], \Illuminate\Support\Str::title($feature['title'])) }}" loading="lazy">
                         </div>
                         <div class="greenly-service-detail__feature-copy">
                             <h3 class="greenly-service-detail__feature-title">{{ \Illuminate\Support\Str::title($feature['title']) }}</h3>

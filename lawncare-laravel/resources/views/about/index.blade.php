@@ -2,12 +2,17 @@
 
 @section('title', $about_page['seo_title'] ?? ('About — '.$site['name']))
 @section('meta_description', $about_page['seo_description'] ?? $site['description'])
+@section('meta_keywords', $about_page['seo_keywords'] ?? '')
+
+@push('head')
+@include('partials.faq-jsonld', ['faqs' => $about_faqs ?? []])
+@endpush
 
 @section('content')
     {{-- Hero --}}
     <section class="harmone-about-page-hero" data-about-hero>
         <div class="harmone-about-page-hero__bg-wrap" data-about-parallax>
-            <img src="{{ $about_page['hero_image'] }}" alt="" class="harmone-about-page-hero__bg" aria-hidden>
+            <img src="{{ $about_page['hero_image'] }}" alt="{{ site_image_alt($about_page['hero_image']) }}" class="harmone-about-page-hero__bg">
         </div>
         <div class="harmone-about-page-hero__shade" aria-hidden></div>
         <div class="harmone-about-page-hero__inner">
@@ -35,12 +40,12 @@
         <div class="harmone-about-page-story__inner">
             <div class="harmone-about-page-story__media" data-about-story-media>
                 <div class="harmone-about-page-story__media-frame" data-about-story-image>
-                    <img src="{{ $about_page['story_image'] }}" alt="Property care team at work" loading="lazy">
+                    <img src="{{ $about_page['story_image'] }}" alt="{{ site_image_alt($about_page['story_image'], 'Property care team at work') }}" loading="lazy">
                 </div>
             </div>
             <div class="harmone-about-page-story__content" data-reveal-group>
                 <div class="harmone-about-badge harmone-about-reveal" data-about-reveal="slide-left">
-                    <img src="{{ $section_icon }}" alt="" width="24" height="24" aria-hidden>
+                    <img src="{{ $section_icon }}" alt="{{ site_image_alt($section_icon, 'Section arrow icon') }}" width="24" height="24">
                     <span>{{ $about_page['story_badge'] }}</span>
                 </div>
                 <h2 class="harmone-about-page-story__title" data-word-reveal>{{ $about_page['story_title'] }}</h2>
@@ -91,7 +96,7 @@
         <div class="harmone-about-page-faq__inner">
             <header class="harmone-about-page-faq__header">
                 <div class="harmone-about-badge harmone-about-reveal" data-about-reveal="slide-left">
-                    <img src="{{ $section_icon }}" alt="" width="24" height="24" aria-hidden>
+                    <img src="{{ $section_icon }}" alt="{{ site_image_alt($section_icon, 'Section arrow icon') }}" width="24" height="24">
                     <span>{{ $about_page['faq_badge'] }}</span>
                 </div>
                 <h2 class="harmone-about-page-faq__title harmone-about-reveal" data-about-reveal="fade-up">{{ $about_page['faq_title'] }}</h2>

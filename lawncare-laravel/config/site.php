@@ -25,7 +25,8 @@ return [
             'country' => 'Canada',
         ],
         'seo_title' => 'Lawn Care and Snow Removal in Spruce Grove, AB',
-        'seo_description' => 'Explore residential and commercial lawn care, seasonal clean-up, property hauling, and residential snow removal in Spruce Grove, Alberta.',
+        'seo_description' => 'Trusted lawn care & snow removal based in Spruce Grove, AB. Serving Edmonton, St. Albert, Stony Plain, Leduc, Acheson, Beaumont & Sherwood Park.',
+        'seo_keywords' => 'lawn care Spruce Grove, snow removal Edmonton, landscaping St. Albert, yard maintenance Stony Plain',
         'logo' => '/assets/site/logo-header.png',
         'hero_video' => 'https://framerusercontent.com/assets/BbBrpYmkGRxDlha1JE84gb3ri0.mp4',
         'hero_image' => "{$cdn}/h3h6bqgb3739myylkbjh0rbm3yjj",
@@ -94,7 +95,8 @@ return [
         'blogs_badge' => 'Our Blogs',
         'blogs_cta' => 'View All Blogs',
         'seo_title' => 'Lawn Care and Snow Removal in Spruce Grove, AB',
-        'seo_description' => 'Explore residential and commercial lawn care, seasonal clean-up, property hauling, and residential snow removal in Spruce Grove, Alberta.',
+        'seo_description' => 'Trusted lawn care & snow removal based in Spruce Grove, AB. Serving Edmonton, St. Albert, Stony Plain, Leduc, Acheson, Beaumont & Sherwood Park.',
+        'seo_keywords' => 'lawn care Spruce Grove, snow removal Edmonton, landscaping St. Albert, yard maintenance Stony Plain',
     ],
 
     'services_page' => [
@@ -118,8 +120,15 @@ return [
             'hero_image' => '/assets/services/snow-removal/snow-removal-card.jpg?v=snow2026d',
             'video' => null,
             'offerings_lead' => 'Explore our residential winter maintenance services for driveways, walkways, and other outdoor access areas.',
-            'seo_title' => 'Residential Snow Removal | Spruce Grove, Edmonton and Stony Plain',
-            'seo_description' => 'Keep residential driveways and walkways clearer with snow removal services in Spruce Grove, Edmonton, and Stony Plain.',
+            'seo_title' => 'Residential Snow Removal | Spruce Grove, Edmonton & Stony Plain',
+            'seo_description' => 'Reliable residential snow removal in Spruce Grove, Edmonton & Stony Plain, plus commercial clearing across St. Albert, Leduc, Acheson & Sherwood Park.',
+            'seo_keywords' => 'residential snow removal Spruce Grove, snow clearing Edmonton, snow removal Stony Plain, commercial snow clearing Acheson',
+            'faqs' => [
+                ['question' => 'Which cities are covered for residential snow removal?', 'answer' => 'Available in Spruce Grove, Edmonton, and Stony Plain, Alberta.'],
+                ['question' => 'What surfaces do you clear during winter snowfall?', 'answer' => 'Driveways, front walkways, city sidewalks bordering the property, front steps, plus manual ice chipping and ice melt application.'],
+                ['question' => 'Do you offer commercial snow removal?', 'answer' => 'No, snow removal is exclusive to residential properties in the covered cities.'],
+                ['question' => 'How quickly do you clear snow after a storm?', 'answer' => 'Prompt storm response is provided following snowfall events.'],
+            ],
             'detail_offerings' => [
                 [
                     'title' => 'Driveway Clearing',
@@ -153,8 +162,15 @@ return [
             'hero_image' => '/assets/services/lawn-care/lawn-care-card.jpg?v=lawn2026g',
             'video' => null,
             'offerings_lead' => 'Our lawn care services cover key maintenance needs to help keep your lawn tidy and cared for throughout the growing season.',
-            'seo_title' => 'Lawn Care and Maintenance in Spruce Grove, AB',
-            'seo_description' => 'Explore lawn mowing, edging, fertilizer application, aeration, power raking, overseeding, and lawn patch restoration for residential and commercial properties.',
+            'seo_title' => 'Lawn Care & Maintenance in Spruce Grove, AB',
+            'seo_description' => 'Professional lawn care & maintenance in Spruce Grove, Edmonton, St. Albert, Stony Plain, Leduc & Sherwood Park. Weekly mowing, aeration & weed control.',
+            'seo_keywords' => 'lawn care Spruce Grove, grass cutting Edmonton, lawn maintenance St. Albert, weed control Sherwood Park',
+            'faqs' => [
+                ['question' => 'What is included in your lawn care and maintenance service?', 'answer' => 'Services cover regular mowing, edging, fertilization, core aeration, power raking, overseeding, and patch restoration.'],
+                ['question' => 'How often should I have my lawn mowed in Spruce Grove and Edmonton?', 'answer' => 'Weekly mowing during peak spring and summer months keeps grass healthy and prevents weeds.'],
+                ['question' => 'When is the best time for lawn aeration and overseeding in Alberta?', 'answer' => 'Spring (May to June) and early fall (late August to September) are ideal.'],
+                ['question' => 'Do you offer one-time grass cutting or only seasonal packages?', 'answer' => 'Both recurring maintenance and one-time cutting are available for residential and commercial properties.'],
+            ],
             'detail_offerings' => [
                 [
                     'title' => 'Lawn Mowing and Trimming',
@@ -199,8 +215,15 @@ return [
             'hero_image' => '/assets/services/property-cleanup/property-cleanup-card.jpg?v=cleanup2026g',
             'video' => null,
             'offerings_lead' => 'From seasonal yard debris to larger property clear-outs, explore the clean-up and hauling services available.',
-            'seo_title' => 'Property Clean-Up and Hauling in Spruce Grove, AB',
-            'seo_description' => 'Get help with yard clean-up, property debris removal, estate and bulk item removal, property clear-outs, and site clean-up.',
+            'seo_title' => 'Property Clean-Up & Hauling in Spruce Grove, AB',
+            'seo_description' => 'Year-round property cleanup & maintenance in Spruce Grove, Edmonton, St. Albert, Acheson, Leduc, Beaumont & Sherwood Park. Residential & commercial.',
+            'seo_keywords' => 'property maintenance Spruce Grove, commercial cleanup Acheson, yard debris removal Leduc, exterior maintenance Edmonton',
+            'faqs' => [
+                ['question' => 'What types of property clean-up and hauling services do you offer?', 'answer' => 'Yard debris removal, overgrown yard clean-up, estate/bulk item removal, and complete site disposal.'],
+                ['question' => 'Do you handle estate clean-outs or bulk outdoor item removal?', 'answer' => 'Yes, clearing unwanted outdoor items and debris for homeowners and managers.'],
+                ['question' => 'Which areas do you serve for property clean-up and hauling?', 'answer' => 'Spruce Grove, Edmonton, St. Albert, Stony Plain, Leduc, Acheson, Beaumont, and Sherwood Park.'],
+                ['question' => 'How is pricing calculated for property hauling?', 'answer' => 'Based on debris volume, item types, and labor required; call (587) 879-5296 for estimates.'],
+            ],
             'detail_offerings' => [
                 [
                     'title' => 'Yard Clean-Up',
@@ -235,8 +258,15 @@ return [
             'hero_image' => '/assets/services/spring-fall-clean-up/spring-fall-cleanup-card.jpg?v=seasonal2026f',
             'video' => null,
             'offerings_lead' => 'Explore seasonal clean-up services that help clear outdoor debris and prepare your yard for the season ahead.',
-            'seo_title' => 'Spring and Fall Clean-Up in Spruce Grove, AB',
-            'seo_description' => 'Prepare your yard for changing seasons with leaf removal, yard debris removal, bed and hedge blowouts, light pruning, and seasonal clean-up.',
+            'seo_title' => 'Spring & Fall Clean-Up in Spruce Grove, AB',
+            'seo_description' => 'Complete spring & fall yard clean-up in Spruce Grove, Edmonton, St. Albert, Stony Plain & nearby areas. Power raking, leaf removal & debris hauling.',
+            'seo_keywords' => 'spring yard cleanup Spruce Grove, fall leaf removal Edmonton, power raking Stony Plain, yard cleanup Beaumont',
+            'faqs' => [
+                ['question' => 'What is included in a spring yard clean-up?', 'answer' => 'Power raking to remove thatch, blowing out garden beds, clearing winter debris, and season preparation.'],
+                ['question' => 'What is included in a fall yard clean-up?', 'answer' => 'Thorough leaf removal from lawns and flower beds, light tree pruning, perennial cutbacks, and waste hauling.'],
+                ['question' => 'Why is fall leaf removal important before winter in Alberta?', 'answer' => 'Wet leaves under snow suffocate grass and cause snow mold.'],
+                ['question' => 'Do you haul away the leaves and branches after cleaning?', 'answer' => 'Yes, all accumulated leaves, branches, and debris are bagged and removed.'],
+            ],
             'detail_offerings' => [
                 [
                     'title' => 'Leaf Removal',
@@ -358,12 +388,10 @@ return [
     'promise_text' => 'At Lawn Care and Snow Removal Experts, we provide all-season property care with one dedicated crew. From spring and summer lawn maintenance to fall cleanups and winter snow removal, we handle it all. Our team is committed to reliability, efficiency, and expert service, ensuring every property we care for is safe, beautiful, and well-maintained. We serve residential clients, delivering tailored solutions that fit your needs and keep your property looking its best year-round. One crew. Every season. Experts you can trust.',
 
     'home_faqs' => [
-        ['question' => 'Do you offer snow removal for both residential and commercial?', 'answer' => 'We provide lawn care and summer property maintenance for residential and commercial properties. Snow removal is available for residential properties only.'],
-        ['question' => 'What lawn care services do you provide during the warmer months?', 'answer' => 'During the warmer months, our services include lawn mowing and trimming, edging, fertilizer application, aeration, power raking, overseeding, lawn patch restoration, and seasonal yard clean-up.'],
-        ['question' => 'Can I schedule seasonal snow removal contracts?', 'answer' => 'Contact our team to discuss your residential snow removal requirements and service availability.'],
-        ['question' => 'What services do you offer?', 'answer' => 'Our services include lawn care and maintenance, residential snow removal, spring and fall clean-up, and property clean-up and hauling.'],
-        ['question' => 'Are you available year-round?', 'answer' => 'Our services vary by season. Lawn care and seasonal property maintenance are offered during warmer months, while residential snow removal is available during winter.'],
-        ['question' => 'Do you offer property clean-up and hauling?', 'answer' => 'Yes. Property Clean-Up & Hauling is available. Services include yard clean-up, property debris removal, estate and bulk item removal, property clear-outs, and site clean-up and disposal. Contact us to discuss the specific work required.'],
+        ['question' => 'What areas do you serve for lawn care and snow removal?', 'answer' => 'We are based in Spruce Grove, Alberta, and serve Spruce Grove, Edmonton, St. Albert, Stony Plain, Leduc, Acheson, Beaumont, and Sherwood Park. Residential snow removal is specifically available in Spruce Grove, Edmonton, and Stony Plain.'],
+        ['question' => 'Do you offer both residential and commercial property maintenance?', 'answer' => 'Yes, we provide lawn care, summer property maintenance, seasonal clean-ups, and hauling for both residential and commercial properties. Snow removal is offered for residential properties only.'],
+        ['question' => 'Can I hire one company for both summer lawn care and winter snow clearing?', 'answer' => 'Yes, we provide year-round seasonal property care—handling lawn mowing, aeration, and clean-ups in warmer months, and driveway and walkway snow clearing during winter.'],
+        ['question' => 'How do I get a quote for my property?', 'answer' => 'You can request a free quote online through our website, call us at (587) 879-5296, or email us with your property address and service needs.'],
     ],
 
     'process_steps' => [
@@ -514,7 +542,8 @@ return [
         'cta_bg_primary' => "{$harmone}/eV8qujmBooDc26rEtIpX1m2G5M7278.jpg",
         'cta_bg_secondary' => "{$harmone}/cEzebRWPX0YtfvMYFXdKbKptCIs7278.png",
         'seo_title' => 'About Us | Lawn Care and Snow Removal Experts',
-        'seo_description' => 'Learn about Lawn Care and Snow Removal Experts, a property maintenance company based in Spruce Grove, Alberta.',
+        'seo_description' => 'Based in Spruce Grove, AB, Lawn Care and Snow Removal Experts provides reliable yard & winter maintenance across Edmonton, St. Albert, Stony Plain & more.',
+        'seo_keywords' => 'Lawn Care and Snow Removal Experts Spruce Grove, Alberta yard maintenance company, local snow removal experts',
     ],
 
     'about_stats' => [
@@ -544,6 +573,8 @@ return [
         ['question' => 'Can I schedule seasonal snow removal contracts?', 'answer' => 'Contact our team to discuss your residential snow removal requirements and service availability.'],
         ['question' => 'Are you available year-round?', 'answer' => 'Our services vary by season. Lawn care and seasonal property maintenance are offered during warmer months, while residential snow removal is available during winter.'],
         ['question' => 'How do I request a consultation or quote?', 'answer' => 'You can request a quote through our website, call us at (587) 879-5296, or email our team. We will review your property needs and follow up with a clear estimate and next steps.'],
+        ['question' => 'Where is Lawn Care and Snow Removal Experts located?', 'answer' => 'Based in Spruce Grove, Alberta (PO Box 3683, T7X 3A9), serving the Greater Edmonton region.'],
+        ['question' => 'Why choose a local Spruce Grove property maintenance team?', 'answer' => 'Local presence ensures rapid response to Alberta\'s unpredictable weather and seasonal shifts.'],
     ],
 
     'blogs_page' => [
@@ -553,7 +584,15 @@ return [
         'intro' => 'Explore helpful articles about lawn maintenance, seasonal yard clean-up, and residential snow removal. Browse practical tips to help care for your outdoor space throughout the year.',
         'hero_image' => '/assets/site/blogs-hero-custom.jpg?v=bloghero2026c',
         'seo_title' => 'Lawn Care Blog | Seasonal Property Maintenance Tips',
-        'seo_description' => 'Read practical lawn care, seasonal clean-up, and winter property maintenance tips from Lawn Care and Snow Removal Experts.',
+        'seo_description' => 'Expert lawn care tips & winter snow removal guides for homeowners in Spruce Grove, Edmonton, St. Albert, Stony Plain & surrounding Alberta areas.',
+        'seo_keywords' => 'Spruce Grove lawn care tips, Edmonton snow removal guide, Alberta yard maintenance blog',
+        'faq_badge' => 'FAQs',
+        'faq_title' => 'Common Questions About Our Blog',
+    ],
+
+    'blogs_faqs' => [
+        ['question' => 'What topics are covered on the Lawn Care and Snow Removal Experts blog?', 'answer' => 'Practical seasonal guides including spring checklists, fall clean-up tips, and winter ice management.'],
+        ['question' => 'Are your lawn care and snow tips tailored for Alberta\'s climate?', 'answer' => 'Yes, tailored specifically to Northern Alberta\'s soil, grass types, and freeze-thaw cycles.'],
     ],
 
     'blog_posts' => [

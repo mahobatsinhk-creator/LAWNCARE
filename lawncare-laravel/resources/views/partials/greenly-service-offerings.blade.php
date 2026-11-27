@@ -13,7 +13,7 @@
                     <article class="greenly-service-detail__offering harmone-reveal" data-reveal="fade-up"
                         data-reveal-delay="{{ $index * 90 }}">
                         <div class="greenly-service-detail__offering-media">
-                            <img src="{{ $offering['image'] }}" alt="{{ \Illuminate\Support\Str::title($offering['title']) }}" loading="lazy">
+                            <img src="{{ $offering['image'] }}" alt="{{ site_image_alt($offering['image'], \Illuminate\Support\Str::title($offering['title'])) }}" loading="lazy">
                         </div>
                         <div class="greenly-service-detail__offering-copy">
                             <h3 class="greenly-service-detail__offering-title">{{ \Illuminate\Support\Str::title($offering['title']) }}</h3>

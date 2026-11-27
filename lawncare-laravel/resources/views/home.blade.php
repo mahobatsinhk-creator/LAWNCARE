@@ -2,6 +2,7 @@
 
 @section('title', $home['seo_title'] ?? ($site['seo_title'] ?? $site['name']))
 @section('meta_description', $home['seo_description'] ?? ($site['seo_description'] ?? $site['description']))
+@section('meta_keywords', $home['seo_keywords'] ?? ($site['seo_keywords'] ?? ''))
 
 @push('head')
 @verbatim
@@ -38,63 +39,8 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do you offer snow removal for both residential and commercial?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We provide lawn care and summer property maintenance for residential and commercial properties. Snow removal is available for residential properties only."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What lawn care services do you provide during the warmer months?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "During the warmer months, our services include lawn mowing and trimming, edging, fertilizer application, aeration, power raking, overseeding, lawn patch restoration, and seasonal yard clean-up."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I schedule seasonal snow removal contracts?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Contact our team to discuss your residential snow removal requirements and service availability."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What services do you offer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our services include lawn care and maintenance, residential snow removal, spring and fall clean-up, and property clean-up and hauling."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are you available year-round?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our services vary by season. Lawn care and seasonal property maintenance are offered during warmer months, while residential snow removal is available during winter."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you offer property clean-up and hauling?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Property Clean-Up and Hauling is available. Services include yard clean-up, property debris removal, estate and bulk item removal, property clear-outs, and site clean-up and disposal. Contact us to discuss the specific work required."
-      }
-    }
-  ]
-}
-</script>
 @endverbatim
+@include('partials.faq-jsonld', ['faqs' => $home_faqs ?? []])
 @endpush
 
 @section('content')
@@ -145,7 +91,7 @@
                 <div class="harmone-about-intro harmone-section-header harmone-section-header--center" data-reveal-group>
                     <div class="harmone-section-header__copy">
                         <div class="harmone-about-badge harmone-reveal" data-reveal="slide-left">
-                            <img src="{{ $section_icon }}" alt="" width="24" height="24" aria-hidden>
+                            <img src="{{ $section_icon }}" alt="{{ site_image_alt($section_icon, 'Section arrow icon') }}" width="24" height="24">
                             <span>{{ $home['about_badge'] }}</span>
                         </div>
                         <h2 class="harmone-about-headline harmone-section-header__title">
@@ -162,13 +108,12 @@
 
                 <div class="harmone-about-feature" data-reveal-group>
                     <div class="harmone-about-media harmone-reveal" data-reveal="slide-in">
-                        <img src="{{ $about_feature_image }}" alt="Snow removal service in Spruce Grove, Alberta"
+                        <img src="{{ $about_feature_image }}" alt="{{ site_image_alt($about_feature_image, 'Snow removal service in Spruce Grove, Alberta') }}"
                             class="harmone-about-media__photo"
                             fetchpriority="high"
                             loading="lazy" decoding="async">
-                        <img src="/assets/site/logo-header.png?v=group121" alt=""
-                            class="harmone-about-media__logo" width="80" height="80" loading="lazy" decoding="async"
-                            aria-hidden="true">
+                        <img src="/assets/site/logo-header.png?v=group121" alt="{{ site_image_alt('/assets/site/logo-header.png') }}"
+                            class="harmone-about-media__logo" width="80" height="80" loading="lazy" decoding="async">
                     </div>
                     <div class="harmone-about-card-shell harmone-reveal" data-reveal="fade-up" data-reveal-delay="180">
                         <div class="harmone-about-card">
@@ -179,7 +124,7 @@
                                         <p class="harmone-about-card-role">{{ $site['address']['city'] }},
                                             {{ $site['address']['region'] }}</p>
                                     </div>
-                                    <img src="/assets/site/logo-header.png?v=group121" alt="" width="50" height="50"
+                                    <img src="/assets/site/logo-header.png?v=group121" alt="{{ site_image_alt('/assets/site/logo-header.png') }}" width="50" height="50"
                                         class="harmone-about-card-logo site-logo site-logo--sm" loading="lazy" decoding="async">
                                 </div>
                                 <div class="harmone-about-card-body">
@@ -244,7 +189,7 @@
                 </ul>
             </div>
             <div class="relative min-w-0 max-w-full overflow-hidden rounded-[20px] aspect-[4/5] harmone-reveal" data-reveal="slide-in">
-                <img src="{{ $site['why_us_image'] }}" alt="Professional lawn care services"
+                <img src="{{ $site['why_us_image'] }}" alt="{{ site_image_alt($site['why_us_image'], 'Professional lawn care services') }}"
                     class="h-full w-full object-cover" loading="lazy">
             </div>
         </div>
@@ -291,23 +236,11 @@
                 'title' => $home['faqs_title'],
                 'subtitle' => $home['faqs_subtitle'],
             ])
-            <div class="space-y-3">
-                @foreach ($home_faqs as $faq)
-                    <details class="group harmone-faq-card px-5 py-4">
-                        <summary class="cursor-pointer list-none font-medium marker:content-none md:text-lg">
-                            <span class="flex items-start justify-between gap-4 text-heading">
-                                <span>
-                                    <span
-                                        class="mb-1 block text-xs font-medium uppercase tracking-[0.12em] text-body">Question</span>
-                                    {{ $faq['question'] }}
-                                </span>
-                                <span class="mt-0.5 shrink-0 text-[var(--link)] transition group-open:rotate-45">+</span>
-                            </span>
-                        </summary>
-                        <p class="mt-3 max-w-3xl text-sm leading-relaxed text-body">{{ $faq['answer'] }}</p>
-                    </details>
-                @endforeach
-            </div>
+            @include('partials.harmone-faq-accordion', [
+                'faqs' => $home_faqs ?? [],
+                'showQuestionLabel' => true,
+                'openFirst' => false,
+            ])
         </div>
     </section>
 

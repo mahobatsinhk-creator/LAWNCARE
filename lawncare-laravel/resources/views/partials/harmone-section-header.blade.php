@@ -18,7 +18,7 @@
 ])>
     <div class="harmone-section-header__copy">
         <div class="harmone-section-header__badge harmone-about-badge">
-            <img src="{{ $section_icon }}" alt="" width="24" height="24" aria-hidden>
+            <img src="{{ $section_icon }}" alt="{{ site_image_alt($section_icon, 'Section arrow icon') }}" width="24" height="24">
             <span>{{ $badge }}</span>
         </div>
         @if ($title)

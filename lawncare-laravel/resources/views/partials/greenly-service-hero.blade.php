@@ -16,7 +16,7 @@
                     <source src="{{ $service['video'] }}" type="video/mp4">
                 </video>
             @else
-                <img src="{{ $service['hero_image'] ?? $service['image'] }}" alt="{{ $service['title'] }}"
+                <img src="{{ $service['hero_image'] ?? $service['image'] }}" alt="{{ site_image_alt($service['hero_image'] ?? $service['image'] ?? '', $service['title'] ?? '') }}"
                     loading="eager">
             @endif
         </div>

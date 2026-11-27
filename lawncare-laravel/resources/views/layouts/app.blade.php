@@ -14,22 +14,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @php
         // @section('title', $value) HTML-escapes once; decode before {{ }} so &amp; is not double-encoded.
-        $decodeMeta = static function (string $value): string {
+        $decodeMeta = static function (string $value, bool $plainAnd = false): string {
             $value = html_entity_decode(trim($value), ENT_QUOTES | ENT_HTML5, 'UTF-8');
-            // Prefer plain "and" in titles/previews — never show literal &amp;
-            return preg_replace('/\s*&\s*/', ' and ', $value) ?? $value;
+            // Titles: prefer plain "and". Descriptions/keywords keep exact "&" from SEO copy.
+            if ($plainAnd) {
+                return preg_replace('/\s*&\s*/', ' and ', $value) ?? $value;
+            }
+
+            return $value;
         };
-        $pageTitle = $decodeMeta($__env->yieldContent('title', $site['name'] ?? 'Lawn Care and Snow Removal Experts'));
+        $pageTitle = $decodeMeta($__env->yieldContent('title', $site['name'] ?? 'Lawn Care and Snow Removal Experts'), true);
         $pageDescription = $decodeMeta($__env->yieldContent('meta_description', $site['description'] ?? ''));
+        $pageKeywords = $decodeMeta($__env->yieldContent('meta_keywords', ''));
         $canonicalUrl = trim(html_entity_decode($__env->yieldContent('canonical', url()->current()), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
         $ogImageRaw = trim(html_entity_decode($__env->yieldContent('og_image', $site['logo'] ?? '/assets/site/logo-header.png'), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
         $ogImage = str_starts_with($ogImageRaw, 'http') ? $ogImageRaw : url($ogImageRaw);
         $ogType = trim(html_entity_decode($__env->yieldContent('og_type', 'website'), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
         $siteUrl = rtrim($site['url'] ?? config('app.url'), '/');
-        $siteName = $decodeMeta($site['name'] ?? 'Lawn Care and Snow Removal Experts');
+        $siteName = $decodeMeta($site['name'] ?? 'Lawn Care and Snow Removal Experts', true);
     @endphp
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
+    @if ($pageKeywords !== '')
+        <meta name="keywords" content="{{ $pageKeywords }}">
+    @endif
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

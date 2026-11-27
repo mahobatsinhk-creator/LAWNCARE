@@ -9,15 +9,14 @@
 @endphp
 
 <section class="harmone-footer-cta">
-    <img src="{{ $footer['cta_bg_primary'] }}" alt="" class="harmone-footer-cta__bg harmone-footer-cta__bg--primary"
-        aria-hidden>
-    <img src="{{ $footer['cta_bg_secondary'] }}" alt=""
-        class="harmone-footer-cta__bg harmone-footer-cta__bg--secondary" aria-hidden>
+    <img src="{{ $footer['cta_bg_primary'] }}" alt="{{ site_image_alt($footer['cta_bg_primary']) }}" class="harmone-footer-cta__bg harmone-footer-cta__bg--primary">
+    <img src="{{ $footer['cta_bg_secondary'] }}" alt="{{ site_image_alt($footer['cta_bg_secondary'], 'Lawn Care and Snow Removal Experts badge') }}"
+        class="harmone-footer-cta__bg harmone-footer-cta__bg--secondary">
     <div class="harmone-footer-cta__grain" aria-hidden></div>
     <div class="harmone-footer-cta__shade" aria-hidden></div>
     <div class="harmone-footer-cta__inner">
         <div class="harmone-footer-cta__badge">
-            <img src="{{ $badge_icon }}" alt="" width="18" height="18" aria-hidden>
+            <img src="{{ $badge_icon }}" alt="{{ site_image_alt($badge_icon, 'Arrow icon') }}" width="18" height="18">
             <span>{{ $footer['cta_badge'] }}</span>
         </div>
         <h2 class="harmone-footer-cta__title">{{ $footer['cta_title'] }}</h2>

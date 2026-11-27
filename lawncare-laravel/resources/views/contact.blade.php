@@ -10,7 +10,7 @@
                 <div class="harmone-contact-hero__stack">
                     <div class="harmone-contact-hero__intro">
                         <div class="harmone-contact-hero__badge harmone-reveal" data-reveal="slide-left">
-                            <img src="{{ $contact_badge_icon }}" alt="" width="24" height="24" aria-hidden>
+                            <img src="{{ $contact_badge_icon }}" alt="{{ site_image_alt($contact_badge_icon, 'Arrow icon') }}" width="24" height="24">
                             <span>{{ $contact['hero_badge'] }}</span>
                         </div>
                         <h1 class="harmone-contact-hero__title">
@@ -32,7 +32,7 @@
                             >
                                 <div class="harmone-contact-card__head">
                                     <div class="harmone-contact-card__icon">
-                                        <img src="{{ $card['icon'] }}" alt="" width="45" height="45" aria-hidden>
+                                        <img src="{{ $card['icon'] }}" alt="{{ site_image_alt($card['icon']) }}" width="45" height="45">
                                     </div>
                                     <div class="harmone-contact-card__intro">
                                         <h2 class="harmone-contact-card__title">{{ $card['title'] }}</h2>
@@ -55,8 +55,8 @@
                     </div>
                 </div>
             </div>
-            <div class="harmone-contact-hero__art" aria-hidden>
-                <img src="{{ $contact['hero_image'] }}" alt="">
+            <div class="harmone-contact-hero__art">
+                <img src="{{ $contact['hero_image'] }}" alt="{{ site_image_alt($contact['hero_image'], 'Lawn Care and Snow Removal Experts contact team') }}">
             </div>
         </div>
     </section>
@@ -64,7 +64,7 @@
     <section id="quote" class="harmone-contact-form-section" data-reveal-group>
         <div class="harmone-contact-form-section__inner">
             <div class="harmone-contact-form-section__image harmone-reveal" data-reveal="slide-in">
-                <img src="{{ $contact['form_image'] }}" alt="Seasonal lawn care and property maintenance">
+                <img src="{{ $contact['form_image'] }}" alt="{{ site_image_alt($contact['form_image'], 'Seasonal lawn care and property maintenance') }}">
             </div>
             <div class="harmone-contact-form-section__content harmone-reveal" data-reveal="fade-up"
                 data-reveal-delay="120">
@@ -81,7 +81,7 @@
         <div class="section-inner">
             <header class="harmone-contact-faq__header">
                 <div class="harmone-about-badge harmone-reveal" data-reveal="slide-left">
-                    <img src="{{ $section_icon }}" alt="" width="24" height="24" aria-hidden>
+                    <img src="{{ $section_icon }}" alt="{{ site_image_alt($section_icon, 'Section arrow icon') }}" width="24" height="24">
                     <span>{{ $contact['faq_badge'] }}</span>
                 </div>
                 <h2 class="harmone-contact-faq__title harmone-reveal" data-reveal="fade-up">{{ $contact['faq_title'] }}</h2>

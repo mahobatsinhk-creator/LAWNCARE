@@ -11,7 +11,7 @@
                 <source src="{{ $service['video'] }}" type="video/mp4">
             </video>
         @else
-            <img src="{{ $service['image'] }}" alt="" loading="lazy" decoding="async" aria-hidden="true">
+            <img src="{{ $service['image'] }}" alt="{{ site_image_alt($service['image'], $service['title'] ?? '') }}" loading="lazy" decoding="async">
         @endif
         <div class="leapfly-service-card__shade" aria-hidden="true"></div>
         <div class="leapfly-service-card__content">
